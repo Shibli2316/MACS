@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_real_escape_string($conn, $username);
 
     // The query that is to be executed.
-    $sql = "SELECT * FROM teachers where username='$username'";
+    $sql = "SELECT * FROM admin where username='$username'";
 
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
