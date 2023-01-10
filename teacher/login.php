@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     <?php
-
+    require "../partials/_nav.php";
     // The modal that apears if there is any error in the credentials entered by the user.
     if ($showError) {
         echo '<div class="alert alert-danger alert-success fade show" role="alert">

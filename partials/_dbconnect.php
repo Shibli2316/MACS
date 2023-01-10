@@ -2,12 +2,12 @@
 
 // Variables for the connection
 $server = "localhost";
-$user = "root";
+$username = "root";
 $pass = "";
 $db = "macs";
 
 // Making the connection with the database
-$conn = mysqli_connect($server, $user, $pass, $db);
+$conn = mysqli_connect($server, $username, $pass, $db);
 
 // Checiking the connection
 if(!$conn){

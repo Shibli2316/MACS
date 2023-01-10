@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $username;
 
                 // Once logged in the user is redirected to the page given below
-                header("location: ../instituteView/home.php");
+                header("location: profile.php");
             }
 
             // Show error if the password is incorrect.
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     <?php
-
+    require "../partials/_nav.php";
     // The modal that apears if there is any error in the credentials entered by the user.
     if ($showError) {
         echo '<div class="alert alert-danger alert-success fade show" role="alert">

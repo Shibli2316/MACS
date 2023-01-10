@@ -1,3 +1,4 @@
+<!-- This page should be the login route for admins of institute. -->
 <?php
 // By default the variables for login and error are false that means the user is not logged in and there is no error
 $login = false;
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     <?php
-
+    require "../partials/_nav.php";
     // The modal that apears if there is any error in the credentials entered by the user.
     if ($showError) {
         echo '<div class="alert alert-danger alert-success fade show" role="alert">
