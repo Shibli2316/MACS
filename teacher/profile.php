@@ -31,7 +31,7 @@ include "../partials/_dbconnect.php"
     require "../partials/_nav.php";
 
     // Fetching the data of the logged in user.
-    $sql = "SELECT * FROM `students` WHERE username = '$user'";
+    $sql = "SELECT * FROM `teachers` WHERE username = '$user'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
@@ -40,18 +40,17 @@ include "../partials/_dbconnect.php"
 
 <div class="container">
     <h1>
-        Welcome student: <?php echo ucfirst($user);?>
+        Welcome teacher: <?php echo ucfirst($user);?>
     </h1>
 </div>
-
-    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
+    <!-- In this form the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
         <label for="name">First Name</label>
-        <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
+        <input type="text" name="f_name" id="f_name" readonly placeholder="<?php if ($details['f_name'] == "") {echo "Enter first name";} else {echo $details['f_name'];} ?>"> <br>
         <hr>
         
         <label for="name">Last Name</label>
-        <input type="text" name="l_name" id="l_name" placeholder="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" readonly> <br>
+        <input type="text" name="l_name" id="l_name" readonly placeholder="<?php if ($details['l_name'] == "") {echo "Enter last name";} else {echo $details['l_name'];} ?>"> <br>
         <hr>
         
         <label for="name">Username</label>
@@ -59,17 +58,13 @@ include "../partials/_dbconnect.php"
         <hr>
         
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
+        <input type="email" name="email" id="email" readonly placeholder="<?php if ($details['email'] == "") {echo "Enter email";} else {echo $details['email'];} ?>"> <br>
         <hr>
         
-        <label for="name">Exam</label>
-        <input type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
+        <label for="name">Teacher ID</label>
+        <input type="text" name="teacherID" id="teacherID" readonly placeholder="<?php if ($details['teacherID'] == "") {echo "Enter Employee ID";} else {echo $details['teacherID'];} ?>"> <br>
         <hr>
-        
-        <label for="name">Rank</label>
-        <input type="text" name="rank" id="rank" placeholder="<?php if ($details['rank'] == "0") {echo "Enter Rank";} else {echo $details['rank'];} ?>" readonly> <br>
-        <hr>
-        
+    
         <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
         <?php
         echo "<a href='updateProfile.php?name=".$details['username']."'><input type='button' value='Update'></a>"
