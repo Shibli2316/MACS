@@ -46,11 +46,7 @@ include "../partials/_dbconnect.php"
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
         <label for="name">First Name</label>
-        <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {
-                                                                        echo "Enter name";
-                                                                    } else {
-                                                                        echo $details['f_name'];
-                                                                    } ?>"> <br>
+        <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter name";} else {echo $details['f_name'];} ?>"> <br>
         <hr>
         <label for="name">Last Name</label>
         <input type="text" name="l_name" id="l_name"> <br>
