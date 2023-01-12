@@ -39,13 +39,19 @@ include "../partials/_dbconnect.php"
     
     // If the request method of the form is post the data to be entered into the database are stored in various variables.
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    $filename = $_FILES["upload"]["name"];
+    $tempname = $_FILES["upload"]["tmp_name"];
+
+    $folder = "../imagesT/".$filename;
+    move_uploaded_file($tempname, $folder);
         $f_name = $_POST['f_name'];
         $l_name = $_POST['l_name'];
         $email = $_POST['email'];
         $teacherID = $_POST['teacherID'];
         
         // The updating query being executed.
-        $updatingDetails = "UPDATE `teachers` SET `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `teacherID` = '$teacherID' WHERE `teachers`.`username` = '$user';";
+        $updatingDetails = "UPDATE `teachers` SET `t_img`='$folder', `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `teacherID` = '$teacherID' WHERE `teachers`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -62,7 +68,25 @@ include "../partials/_dbconnect.php"
 
     <!-- In this form the input fields are editable and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
     
-    <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post">
+    <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+
+
+    <?php 
+        if($details['t_img'] == ""){
+            echo "<label for='name'>Upload profile image</label>";
+            echo "<input type='file' name='upload'>";
+        }
+        else{
+            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<label for='name'>Change profile image</label>";
+            // IMPORTANT
+            // THE VALUE TAG IS NOT WORKING AS EXPECTED
+            echo "<input type='file' name='upload' value='".$details['t_img']."'>";
+        }
+    ?>
+    <br>
+    <hr>
+
         <label for="name">First Name</label>
         <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>"> <br>
         <hr>

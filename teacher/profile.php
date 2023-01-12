@@ -43,8 +43,22 @@ include "../partials/_dbconnect.php"
         Welcome teacher: <?php echo ucfirst($user);?>
     </h1>
 </div>
+
     <!-- In this form the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+
+    <?php 
+        if($details['t_img'] == ""){
+            echo "<label for='name'>Upload profile image</label>";
+        }
+        else{
+            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "Profile Image";
+        }
+    ?>
+    <br>
+    <hr>
+
         <label for="name">First Name</label>
         <input type="text" name="f_name" id="f_name" readonly placeholder="<?php if ($details['f_name'] == "") {echo "Enter first name";} else {echo $details['f_name'];} ?>"> <br>
         <hr>

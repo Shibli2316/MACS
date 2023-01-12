@@ -43,7 +43,7 @@ $details = mysqli_fetch_assoc($result);
     $filename = $_FILES["upload"]["name"];
     $tempname = $_FILES["upload"]["tmp_name"];
 
-    $folder = "images/".$filename;
+    $folder = "../images/".$filename;
     move_uploaded_file($tempname, $folder);
 
         $f_name = $_POST['f_name'];

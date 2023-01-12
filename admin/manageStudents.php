@@ -18,7 +18,7 @@ include "../partials/_dbconnect.php"
 
     <!-- Bootstap CSS file CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>View Records</title>
+    <title>Manage Records</title>
 </head>
 <body>
 
@@ -46,6 +46,7 @@ include "../partials/_dbconnect.php"
       <th scope="col">Exam</th>
       <th scope="col">Rank</th>
       <th scope="col">View Documents</th>
+      <th scope="col">Manage</th>
     </tr>
   </thead>
 
@@ -75,7 +76,8 @@ if($howManyRows>0){
           <td>".$row['email']."</td>
           <td>".$row['exam']."</td>
           <td>".$row['rank']."</td>
-          <td><a href='#'><button class='btn btn-primary btn-success'>View</button></a></td>
+          <td><a href='#'><button class='btn btn-primary btn-primary'>View</button></a></td>
+          <td><a href='#'><button class='btn btn-primary btn-success'>Update</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
         </tr>
       </tbody>";
         $sno = $sno+1;

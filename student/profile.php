@@ -59,9 +59,6 @@ include "../partials/_dbconnect.php"
     <br>
     <hr>
 
-
-
-
         <label for="name">First Name</label>
         <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
         <hr>
