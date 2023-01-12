@@ -52,7 +52,7 @@ include "../partials/_dbconnect.php"
             echo "<label for='name'>Upload profile image</label>";
         }
         else{
-            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
             echo "Profile Image";
         }
     ?>

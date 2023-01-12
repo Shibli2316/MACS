@@ -77,11 +77,11 @@ include "../partials/_dbconnect.php"
             echo "<input type='file' name='upload'>";
         }
         else{
-            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<img src='".$details['t_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
             echo "<label for='name'>Change profile image</label>";
             // IMPORTANT
             // THE VALUE TAG IS NOT WORKING AS EXPECTED
-            echo "<input type='file' name='upload' value='".$details['t_img']."'>";
+            echo "<input type='file' name='upload' value='".$details['t_img']."' alt=profile image'>";
         }
     ?>
     <br>

@@ -67,7 +67,7 @@ if($howManyRows>0){
         <tbody>
         <tr>
           <th scope='row'>".$sno."</th>
-          <td><img src='".$row['t_img']."' height='100px' width='100px' style='border-radius:50%;'></td>
+          <td><img src='".$row['t_img']."' height='100px' width='100px' alt='profile image' style='border-radius:50%;'></td>
           <td>".$row['f_name']."</td>
           <td>".$row['l_name']."</td>
           <td>".$row['username']."</td>
