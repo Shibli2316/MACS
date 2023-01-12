@@ -39,6 +39,13 @@ $details = mysqli_fetch_assoc($result);
 
 // If the request method of the form is post the data to be entered into the database are stored in various variables.
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        
+    $filename = $_FILES["upload"]["name"];
+    $tempname = $_FILES["upload"]["tmp_name"];
+
+    $folder = "images/".$filename;
+    move_uploaded_file($tempname, $folder);
+
         $f_name = $_POST['f_name'];
         $l_name = $_POST['l_name'];
         $email = $_POST['email'];
@@ -46,7 +53,7 @@ $details = mysqli_fetch_assoc($result);
         $rank = $_POST['rank'];
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `students` SET `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam', `rank` = '$rank' WHERE `students`.`username` = '$user';";
+        $updatingDetails = "UPDATE `students` SET `s_img`='$folder',`f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam', `rank` = '$rank' WHERE `students`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -62,7 +69,24 @@ $details = mysqli_fetch_assoc($result);
     ?>
 
 <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
-    <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post">
+    <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+
+    <?php 
+        if($details['s_img'] == ""){
+            echo "<label for='name'>Upload profile image</label>";
+            echo "<input type='file' name='upload'>";
+        }
+        else{
+            echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<label for='name'>Change profile image</label>";
+            // IMPORTANT
+            // THE VALUE TAG IS NOT WORKING AS EXPECTED
+            echo "<input type='file' name='upload' value='".$details['s_img']."'>";
+        }
+    ?>
+    <br>
+    <hr>
+
         <label for="name">First Name</label>
         <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>"> <br>
         <hr>
