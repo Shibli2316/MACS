@@ -80,7 +80,7 @@ $details = mysqli_fetch_assoc($result);
             echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
             echo "<label for='name'>Change profile image</label>";
             // IMPORTANT
-            // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
+            // THE VALUE TAG IS NOT WORKING AS EXPECTED
             echo "<input type='file' name='upload' value='".$details['s_img']."' alt='profile image'>";
         }
     ?>
