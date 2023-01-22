@@ -1,3 +1,6 @@
+<!-- NEED TO KEEP TRACK OF S_ID -->
+
+
 <?php
 // The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
 session_start();

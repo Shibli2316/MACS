@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
+                $stud_id = $row['s_id'];
+                $_SESSION['s_id'] = $stud_id;
 
                 // Once logged in the user is redirected to the page given below
                 header("location: profile.php");

@@ -1,0 +1,36 @@
+// BE COLD SHIBLI //
+Nabeela's Passport
+
+Papers *imp*:
+    Nadeem Sir
+    Sabahat
+    Noor appi
+    Swaleha Maam
+    Nabeela
+
+Papers *seminar*:
+    Image Processing
+    Search Engine
+    Artificial Intelligence
+    Cyber Security
+    Cryptography
+    ...
+
+Projects *important*:
+    Multi Institutional Counseling System
+    Servicio
+    SMART
+    Treasure Hunt
+    Nabeela Sr. Project
+    Solution Challange
+    Accountability
+
+Miscellaneous Works:
+    Lets Grow Internship
+    Master Web Development and Machine Learning
+    Akeel Sir (Course Design)
+    University Applying
+    Events (GDSC)
+    Revise Python and Java
+    Practice Problem Solving Skills (DSA).
+    ...
