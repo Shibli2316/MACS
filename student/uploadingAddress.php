@@ -31,8 +31,8 @@ include "../partials/_dbconnect.php"
     require "../partials/_nav.php";
 
     // Fetching the data of the logged in user.
-    // UPDATE THE QUERY
-    $sql = "SELECT * FROM `s_specifics` WHERE `id`='$id'";
+    // UPDATE THE QUERY WHERE CLAUSE
+    $sql = "SELECT * FROM `s_specifics` WHERE `id`=1";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.

@@ -5,6 +5,7 @@ session_start();
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
 $idUser = $_GET['id'];
+
 // Including the connection file of the database.
 include "../partials/_dbconnect.php"
 ?>
@@ -25,19 +26,48 @@ include "../partials/_dbconnect.php"
 </head>
 
 <body>
-    <?php
+<?php
 
-    // Navbar is required before moving forward
-    require "../partials/_nav.php";
+// Navbar is required before moving forward
+require "../partials/_nav.php";
 
-    // Fetching the data of the logged in user.
-    // UPDATE THE QUERY
-    $sql = "SELECT * FROM `s_specifics` WHERE `id`=1";
-    $result = mysqli_query($conn, $sql);
+// Fetching the data of the logged in user.
+$sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
+$result = mysqli_query($conn, $sql);
 
-    // Storing it into an associative array called details.
-    $details = mysqli_fetch_assoc($result);
+// Storing it into an associative array called details.
+$details = mysqli_fetch_assoc($result);
+
+// If the request method of the form is post the data to be entered into the database are stored in various variables.
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        
+        $p_add_hno = $_POST['p_add_hno'];
+        $p_add_locality = $_POST['p_add_locality'];
+        $p_add_city = $_POST['p_add_city'];
+        $p_add_state = $_POST['p_add_state'];
+        $c_add_hno = $_POST['c_add_hno'];
+        $c_add_locality = $_POST['c_add_locality'];
+        $c_add_city = $_POST['c_add_city'];
+        $c_add_state = $_POST['c_add_state'];
+        
+// The updating query being executed.
+
+        $updatingDetails = "UPDATE `s_specifics` SET `p_add_hno`= '$p_add_hno' , `p_add_locality` = '$p_add_locality' , `p_add_city` = '$p_add_city' , `p_add_state` = '$p_add_state' ,`c_add_hno`='$c_add_hno' , `c_add_locality` = '$c_add_locality' , `c_add_city` = '$c_add_city' , `c_add_state` = '$c_add_state' WHERE `s_specifics`.`id` = '$idUser';";
+        
+        $run = mysqli_query($conn, $updatingDetails);
+        if (!$run) {
+            echo "Error while updating records";
+        } else {
+            echo "<script>alert('Your records has been updated successfully!!!')</script>";
     ?>
+
+<!-- Redirecting to profile page -->
+            <meta http-equiv="refresh" content="0; url = uploadingAddress.php" />
+    <?php
+        }
+    }
+    ?>
+
 
 <div class="container">
     <h1>
@@ -47,7 +77,7 @@ include "../partials/_dbconnect.php"
 </div>
 
     <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']."?id=".$idUser; ?>" class="mx-2 my-2" method="post">
     
         <h3>Permanent Address</h3>
         <label for="name">House No</label>
@@ -83,8 +113,7 @@ include "../partials/_dbconnect.php"
         <input type="text" name="c_add_state" id="c_add_state" value="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" > <br>
         <hr>
         
-        <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
-        <!-- UPDATE THE BUTTON -->
+        <!-- SAVE BUTTON -->
         <input type="submit" value="Save">
 
     </form>

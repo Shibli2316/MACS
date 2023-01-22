@@ -7,6 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
+$idUser = $_SESSION['s_id'];
 
 // Including the connection file of the database.
 include "../partials/_dbconnect.php"
@@ -34,7 +35,7 @@ include "../partials/_dbconnect.php"
     require "../partials/_nav.php";
 
     // Fetching the data of the logged in user.
-    $sql = "SELECT * FROM `students` WHERE username = '$user'";
+    $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
@@ -60,35 +61,51 @@ include "../partials/_dbconnect.php"
         }
     ?>
     <br>
-    <hr>
-
-        <label for="name">First Name</label>
-        <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Last Name</label>
-        <input type="text" name="l_name" id="l_name" placeholder="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Username</label>
-        <input type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-        <hr>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Exam</label>
-        <input type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
-        <hr>
-        
-        
-        
-        <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
-        <?php
-        echo "<a href='updateProfile.php?name=".$details['username']."'><input type='button' value='Update'></a>"
+    <?php
+        echo "<a href='updateImage.php?user=".$idUser."'><input type='button' value='Update'></a>"
         ?>
 
+<hr>
+</form>
+
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+
+    <?php 
+        if($details['s_sign'] == ""){
+            echo "<label for='name'>Upload signature</label>";
+        }
+        else{
+            echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;' alt='Student Signature'><br>";
+            echo "Student Signature";
+        }
+    ?>
+    <br>
+    <?php
+        echo "<a href='updateSign.php?user=".$idUser."'><input type='button' value='Update'></a>"
+        ?>
+
+<hr>
+    </form>
+
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+
+    <?php 
+        if($details['s_thumb'] == ""){
+            echo "<label for='name'>Upload thumb impression</label>";
+        }
+        else{
+            echo "<img src='".$details['s_thumb']."' height='100px' width='100px' style='border-radius:50%;' alt='Thumb Impression'><br>";
+            echo "Thumb Impression";
+        }
+    ?>
+    <br>
+    
+    <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
+    <?php
+        echo "<a href='updateThumb.php?user=".$idUser."'><input type='button' value='Update'></a>"
+        ?>
+
+<hr>
     </form>
 
     <!-- Bootstap JS file CDN -->

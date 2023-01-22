@@ -7,6 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
+$idUser = $_GET['user'];
 
 // Including the connection file of the database.
 include "../partials/_dbconnect.php"
@@ -34,7 +35,7 @@ include "../partials/_dbconnect.php"
 require "../partials/_nav.php";
 
 // Fetching the data of the logged in user.
-$sql = "SELECT * FROM `students` WHERE username = '$user'";
+$sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
 $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.
@@ -49,13 +50,8 @@ $details = mysqli_fetch_assoc($result);
     $folder = "../images/".$filename;
     move_uploaded_file($tempname, $folder);
 
-        $f_name = $_POST['f_name'];
-        $l_name = $_POST['l_name'];
-        $email = $_POST['email'];
-        $exam = $_POST['exam'];
-
 // The updating query being executed.
-        $updatingDetails = "UPDATE `students` SET `s_img`='$folder',`f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam' WHERE `students`.`username` = '$user';";
+        $updatingDetails = "UPDATE `s_specifics` SET `s_sign`='$folder' WHERE `s_specifics`.`id` = '$idUser';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -64,53 +60,31 @@ $details = mysqli_fetch_assoc($result);
     ?>
 
 <!-- Redirecting to profile page -->
-            <meta http-equiv="refresh" content="0; url = profile.php" />
+            <meta http-equiv="refresh" content="0; url = uploadingImages.php" />
     <?php
         }
     }
     ?>
 
 <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
-    <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+    <form action="updateSign.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
     <?php 
-        if($details['s_img'] == ""){
-            echo "<label for='name'>Upload profile image</label>";
+        if($details['s_sign'] == ""){
+            echo "<label for='name'>Upload Signature</label>";
             echo "<input type='file' name='upload'>";
         }
         else{
-            echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
-            echo "<label for='name'>Change profile image</label>";
+            echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<label for='name'>Change Signature</label>";
             // IMPORTANT
             // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
-            echo "<input type='file' name='upload' value='".$details['s_img']."' alt='profile image'>";
+            echo "<input type='file' name='upload' value='".$details['s_sign']."' alt='signature'>";
         }
     ?>
     <br>
+    <input type="submit" value="Save">
     <hr>
-
-        <label for="name">First Name</label>
-        <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>"> <br>
-        <hr>
-        
-        <label for="name">Last Name</label>
-        <input type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>"> <br>
-        <hr>
-        
-        <label for="name">Username</label>
-        <input type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-        <hr>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>"> <br>
-        <hr>
-        
-        <label for="name">Exam</label>
-        <input type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
-        <hr>
-        
-        
-        <input type="submit" value="Save">
         
     </form>
 
