@@ -79,9 +79,7 @@ include "../partials/_dbconnect.php"
         <input type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
         <hr>
         
-        <label for="name">Rank</label>
-        <input type="text" name="rank" id="rank" placeholder="<?php if ($details['rank'] == "0") {echo "Enter Rank";} else {echo $details['rank'];} ?>" readonly> <br>
-        <hr>
+        
         
         <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
         <?php

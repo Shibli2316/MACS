@@ -50,10 +50,9 @@ $details = mysqli_fetch_assoc($result);
         $l_name = $_POST['l_name'];
         $email = $_POST['email'];
         $exam = $_POST['exam'];
-        $rank = $_POST['rank'];
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `students` SET `s_img`='$folder',`f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam', `rank` = '$rank' WHERE `students`.`username` = '$user';";
+        $updatingDetails = "UPDATE `students` SET `s_img`='$folder',`f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam' WHERE `students`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -107,9 +106,6 @@ $details = mysqli_fetch_assoc($result);
         <input type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
         <hr>
         
-        <label for="name">Rank</label>
-        <input type="text" name="rank" id="rank" value="<?php if ($details['rank'] == "0") {echo "Enter Rank";} else {echo $details['rank'];} ?>"> <br>
-        <hr>
         
         <input type="submit" value="Save">
         
