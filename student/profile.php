@@ -81,6 +81,14 @@ include "../partials/_dbconnect.php"
         <label for="name">Exam</label>
         <input type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
         <hr>
+
+        <label for="name">Application Number</label>
+        <input type="text" name="form_no" id="form_no" placeholder="<?php if ($details['form_no'] == "") {echo "Enter Application Number";} else {echo $details['form_no'];} ?>" readonly> <br>
+        <hr>
+        
+        <label for="name">Rank</label>
+        <input type="text" name="rank" id="rank" placeholder="<?php if ($details['rank'] == "") {echo "Enter your Rank";} else {echo $details['rank'];} ?>" readonly> <br>
+        <hr>
         
         
         
