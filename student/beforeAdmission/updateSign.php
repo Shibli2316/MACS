@@ -10,7 +10,7 @@ $user = $_SESSION['username'];
 $idUser = $_GET['user'];
 
 // Including the connection file of the database.
-include "../partials/_dbconnect.php"
+include "../../partials/_dbconnect.php"
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ include "../partials/_dbconnect.php"
 <?php
 
 // Navbar is required before moving forward
-require "../partials/_nav.php";
+require "../../partials/_nav.php";
 
 // Fetching the data of the logged in user.
 $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
@@ -47,11 +47,11 @@ $details = mysqli_fetch_assoc($result);
     $filename = $_FILES["upload"]["name"];
     $tempname = $_FILES["upload"]["tmp_name"];
 
-    $folder = "../images/".$filename;
+    $folder = "../../images/imagesS/signature/".$filename;
     move_uploaded_file($tempname, $folder);
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `s_specifics` SET `s_thumb`='$folder' WHERE `s_specifics`.`id` = '$idUser';";
+        $updatingDetails = "UPDATE `s_specifics` SET `s_sign`='$folder' WHERE `s_specifics`.`id` = '$idUser';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -67,19 +67,19 @@ $details = mysqli_fetch_assoc($result);
     ?>
 
 <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
-    <form action="updateThumb.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+    <form action="updateSign.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
     <?php 
-        if($details['s_thumb'] == ""){
-            echo "<label for='name'>Upload Thumb Impression</label>";
+        if($details['s_sign'] == ""){
+            echo "<label for='name'>Upload Signature</label>";
             echo "<input type='file' name='upload'>";
         }
         else{
-            echo "<img src='".$details['s_thumb']."' height='100px' width='100px' style='border-radius:50%;'><br>";
-            echo "<label for='name'>Change Thumb Impression</label>";
+            echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;'><br>";
+            echo "<label for='name'>Change Signature</label>";
             // IMPORTANT
             // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
-            echo "<input type='file' name='upload' value='".$details['s_thumb']."' alt='thumb impression'>";
+            echo "<input type='file' name='upload' value='".$details['s_sign']."' alt='signature'>";
         }
     ?>
     <br>

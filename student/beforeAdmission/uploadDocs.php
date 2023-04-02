@@ -1,7 +1,7 @@
 <?php
 
-include '../partials/_dbconnect.php';
-include '../partials/_nav.php';
+include '../../partials/_dbconnect.php';
+include '../../partials/_nav.php';
 
 ?>
 

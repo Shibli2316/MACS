@@ -10,7 +10,7 @@ $user = $_SESSION['username'];
 $idUser = $_SESSION['s_id'];
 
 // Including the connection file of the database.
-include "../partials/_dbconnect.php"
+include "../../partials/_dbconnect.php"
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ include "../partials/_dbconnect.php"
     <?php
 
     // Navbar is required before moving forward
-    require "../partials/_nav.php";
+    require "../../partials/_nav.php";
 
     // Fetching the data of the logged in user.
     $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
