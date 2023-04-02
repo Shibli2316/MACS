@@ -104,7 +104,7 @@ $details = mysqli_fetch_assoc($result);
         <hr>
         
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>"> <br>
+        <input type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
         <hr>
         
         <label for="name">Exam</label>

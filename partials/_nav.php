@@ -21,6 +21,9 @@ echo "
                     <li class='nav-item'>
                         <a class='nav-link' href='../guestView/login.php'>Guest</a>
                     </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='../partials/logout.php'>logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
