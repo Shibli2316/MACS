@@ -6,7 +6,7 @@ session_start();
 $user = $_SESSION['username'];
 
 // Including the connection file of the database.
-include "../partials/_dbconnect.php"
+include "../../partials/_dbconnect.php"
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ include "../partials/_dbconnect.php"
 
 <?php
     // Navbar is required before moving forward
-    require "../partials/_nav.php";
+    require "../../partials/_nav.php";
 ?>
 
 
@@ -43,7 +43,9 @@ include "../partials/_dbconnect.php"
       <th scope="col">Last Name</th>
       <th scope="col">Username</th>
       <th scope="col">Email</th>
-      <th scope="col">ID</th>
+      <th scope="col">Exam</th>
+      <th scope="col">Rank</th>
+      <th scope="col">View Documents</th>
       <th scope="col">Manage</th>
     </tr>
   </thead>
@@ -53,7 +55,7 @@ include "../partials/_dbconnect.php"
 $sno = 1;
 
 // Fetching students records
-$fetching = "SELECT * FROM teachers;";
+$fetching = "SELECT * FROM students;";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";
@@ -67,13 +69,15 @@ if($howManyRows>0){
         <tbody>
         <tr>
           <th scope='row'>".$sno."</th>
-          <td><img src='".$row['t_img']."' height='100px' width='100px' alt='profile image' style='border-radius:50%;'></td>
+          <td><img src='".$row['s_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'></td>
           <td>".$row['f_name']."</td>
           <td>".$row['l_name']."</td>
           <td>".$row['username']."</td>
           <td>".$row['email']."</td>
-          <td>".$row['teacherID']."</td>
-          <td><a href='#'><button class='btn btn-primary btn-primary'>Disable</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
+          <td>".$row['exam']."</td>
+          <td>".$row['rank']."</td>
+          <td><a href='#'><button class='btn btn-primary btn-primary'>View</button></a></td>
+          <td><a href='#'><button class='btn btn-primary btn-success'>Update</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
         </tr>
       </tbody>";
         $sno = $sno+1;

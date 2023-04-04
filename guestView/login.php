@@ -8,7 +8,7 @@ $showError = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Includes the db connect file that contains the connectivity for the database.
-    include "../partials/_dbconnect.php";
+    include "../partials/_dbconnectAdmin.php";
 
     // Taking input and assigning variables to it
     $username = $_POST["username"];
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $username;
 
                 // Once logged in the user is redirected to the page given below
-                header("location: ../instituteView/home.php");
+                header("location: ../admin");
             }
 
             // Show error if the password is incorrect.
