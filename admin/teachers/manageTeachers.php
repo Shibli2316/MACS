@@ -9,28 +9,18 @@ $user = $_SESSION['username'];
 include "../../partials/_dbconnect.php"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstap CSS file CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Manage Records</title>
-</head>
-<body>
-
 <?php
-    // Navbar is required before moving forward
-    require "../../partials/_nav.php";
+include '../includes/header.php';
 ?>
 
 
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Manage Teachers</h1>
 
 <div class="container">
-    <h1>Displaying teachers data</h1>
+
 
 
 <!-- Making table to display the records -->
@@ -73,7 +63,7 @@ if($howManyRows>0){
           <td>".$row['username']."</td>
           <td>".$row['email']."</td>
           <td>".$row['teacherID']."</td>
-          <td><a href='#'><button class='btn btn-primary btn-primary'>Disable</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
+          <td><a href='#'><button class='btn btn-success'>Update</button></a><hr><a href='#'><button class='btn btn-primary btn-primary'>Disable</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
         </tr>
       </tbody>";
         $sno = $sno+1;
@@ -88,9 +78,10 @@ else{
 ?>
 </div>
 </table>
-
+</div>
 <!-- Bootstap JS file CDN -->
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  
-</body>
-</html>
+<?php
+include '../includes/footer.php';
+?>

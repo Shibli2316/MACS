@@ -8,6 +8,8 @@ session_start();
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
 $idUser = $_SESSION['s_id'];
+// $user = 'shibli';
+// $idUser = 1;
 
 // Including the connection file of the database.
 include "../../partials/_dbconnect.php"
@@ -33,7 +35,7 @@ include "../../partials/_dbconnect.php"
 
     // Navbar is required before moving forward
     require "../../partials/_nav.php";
-
+    include "../../partials/_studNav.php";
     // Fetching the data of the logged in user.
     $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
     $result = mysqli_query($conn, $sql);
@@ -42,16 +44,16 @@ include "../../partials/_dbconnect.php"
     $details = mysqli_fetch_assoc($result);
     ?>
 
-<div class="container">
-    <h1>
-        Welcome student: <?php echo ucfirst($user);?>
-    </h1>
+<div class="container text-center card-header my-4">
+    <h3>Required Images</h3>
 </div>
 
-    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
-
-    <?php 
+    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button  class='btn btn-primary'to update his/her details. -->
+    <div class="container border row text-center mx-auto">
+<div class="col-md-4 my-4">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+    
+<?php 
         if($details['s_img'] == ""){
             echo "<label for='name'>Upload profile image</label>";
         }
@@ -62,14 +64,16 @@ include "../../partials/_dbconnect.php"
     ?>
     <br>
     <?php
-        echo "<a href='updateImage.php?user=".$idUser."'><input type='button' value='Update'></a>"
+        echo "<a href='updateImage.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
-<hr>
+
 </form>
+    </div>
+<div class="col-md-4 my-4">
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
-
+        
     <?php 
         if($details['s_sign'] == ""){
             echo "<label for='name'>Upload signature</label>";
@@ -78,15 +82,18 @@ include "../../partials/_dbconnect.php"
             echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;' alt='Student Signature'><br>";
             echo "Student Signature";
         }
-    ?>
+        ?>
     <br>
     <?php
-        echo "<a href='updateSign.php?user=".$idUser."'><input type='button' value='Update'></a>"
+        echo "<a href='updateSign.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
-<hr>
-    </form>
 
+</form>
+</div>
+
+<div class="col-md-4 my-4">
+    
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
     <?php 
@@ -97,19 +104,19 @@ include "../../partials/_dbconnect.php"
             echo "<img src='".$details['s_thumb']."' height='100px' width='100px' style='border-radius:50%;' alt='Thumb Impression'><br>";
             echo "Thumb Impression";
         }
-    ?>
+        ?>
     <br>
     
-    <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
+    <!-- The update button  class='btn btn-primary'directing the user to the update page from where he or she can update his/her profile -->
     <?php
-        echo "<a href='updateThumb.php?user=".$idUser."'><input type='button' value='Update'></a>"
+        echo "<a href='updateThumb.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
-<hr>
-    </form>
 
+</form>
+</div>
+
+</div>
     <!-- Bootstap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include '../../partials/_footer.php';?>

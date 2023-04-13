@@ -32,7 +32,8 @@ include "../../partials/_dbconnect.php"
 <?php
 
 // Navbar is required before moving forward
-require "../../partials/_nav.php";
+include "../../partials/_nav.php";
+include "../../partials/_studNav.php";
 
 // Fetching the data of the logged in user.
 $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
@@ -66,9 +67,17 @@ $details = mysqli_fetch_assoc($result);
     }
     ?>
 
-<!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
-    <form action="updateImage.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+<div class="container text-center card-header my-4">
+    <h3>Update Profile Image</h3>
+</div>
 
+<div class="container border">
+
+    <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
+    <div class="container text-conter">
+
+        <form action="updateImage.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+            
     <?php 
         if($details['s_img'] == ""){
             echo "<label for='name'>Upload Profile Image</label>";
@@ -81,15 +90,18 @@ $details = mysqli_fetch_assoc($result);
             // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
             echo "<input type='file' name='upload' value='".$details['s_img']."' alt='profile image'>";
         }
-    ?>
+        ?>
     <br>
-    <input type="submit" value="Save">
-    <hr>
-        
-    </form>
+    <div class="container text-center">
 
+        <input type="submit" value="Save" class="btn btn-primary">
+    </div>
+    <!-- <hr> -->
+    
+</form>
+</div>
+
+</div>
     <!-- Bootstrap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include '../../partials/_footer.php';?>

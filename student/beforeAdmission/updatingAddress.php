@@ -30,6 +30,9 @@ include "../../partials/_dbconnect.php"
 
 // Navbar is required before moving forward
 require "../../partials/_nav.php";
+include '../../partials/_studNav.php';
+
+
 
 // Fetching the data of the logged in user.
 $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
@@ -69,17 +72,16 @@ $details = mysqli_fetch_assoc($result);
     ?>
 
 
-<div class="container">
-    <h1>
-        Welcome student: <?php echo ucfirst($user);?>
-        <p>Uplaod your documents</p>
-    </h1>
+<div class="container text-center card-header my-4">
+    <h3>Update address</h3>
 </div>
-
     <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
+    <div class="container border">
     <form action="<?php echo $_SERVER['PHP_SELF']."?id=".$idUser; ?>" class="mx-2 my-2" method="post">
-    
+    <div class="container text-center">
+
         <h3>Permanent Address</h3>
+    </div>
         <label for="name">House No</label>
         <input type="text" name="p_add_hno" id="p_add_hno" value="<?php if ($details['p_add_hno'] == "") {echo "Enter House Number";} else {echo $details['p_add_hno'];} ?>" > <br>
         <hr>
@@ -96,7 +98,10 @@ $details = mysqli_fetch_assoc($result);
         <input type="text" name="p_add_state" id="p_add_state" value="<?php if ($details['p_add_state'] == "") {echo "Enter State";} else {echo $details['p_add_state'];} ?>" > <br>
         <hr>
         
-        <h3>Corresponding Address</h3>
+        <div class="container text-center">
+
+            <h3>Corresponding Address</h3>
+        </div>
         <label for="name">House No</label>
         <input type="text" name="c_add_hno" id="c_add_hno" value="<?php if ($details['c_add_hno'] == "") {echo "Enter House Number";} else {echo $details['c_add_hno'];} ?>" > <br>
         <hr>
@@ -112,14 +117,15 @@ $details = mysqli_fetch_assoc($result);
         <label for="state">State</label>
         <input type="text" name="c_add_state" id="c_add_state" value="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" > <br>
         <hr>
-        
-        <!-- SAVE BUTTON -->
-        <input type="submit" value="Save">
-
+        <div class="container text-center">
+            <!-- SAVE BUTTON -->
+            
+            <input type="submit" value="Save" class="btn btn-primary">
+            
+        </div>
     </form>
+    </div>
 
     <!-- Bootstap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include '../../partials/_footer.php';?>

@@ -40,17 +40,23 @@ include "../../partials/_dbconnect.php"
     // Storing it into an associative array called details.
     $details = mysqli_fetch_assoc($result);
     ?>
+<?php include '../../partials/_studNav.php';?>
 
-<div class="container">
+<div class="container border text-center my-4">
     <h1>
         Welcome student: <?php echo ucfirst($user);?>
     </h1>
 </div>
 
     <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+    <div class="container border">
+<div class=" text-center card-header">
+    <h3>Your Profile</h3>
+</div>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+            <div class="container text-cente">
 
-    <?php 
+                <?php 
         if($details['s_img'] == ""){
             echo "<label for='name'>Upload profile image</label>";
         }
@@ -58,7 +64,8 @@ include "../../partials/_dbconnect.php"
             echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
             echo "Profile Image";
         }
-    ?>
+        ?>
+        </div>
     <br>
     <hr>
 
@@ -91,16 +98,20 @@ include "../../partials/_dbconnect.php"
         <hr>
         
         
-        
-        <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
-        <?php
-        echo "<a href='updateProfile.php?name=".$details['username']."'><input type='button' value='Update'></a>"
+        <div class="container text-center">
+
+            <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
+            <?php
+        echo "<a href='updateProfile.php?name=".$details['username']."'><input type='button' value='Update' class='btn btn-primary'></a>"
         ?>
 
+</div>
     </form>
-
+    
+</div>
     <!-- Bootstap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <?php include '../../partials/_footer.php';?>
 </body>
 
 </html>

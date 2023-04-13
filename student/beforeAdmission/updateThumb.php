@@ -33,6 +33,7 @@ include "../../partials/_dbconnect.php"
 
 // Navbar is required before moving forward
 require "../../partials/_nav.php";
+include '../../partials/_studNav.php';
 
 // Fetching the data of the logged in user.
 $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
@@ -65,8 +66,12 @@ $details = mysqli_fetch_assoc($result);
         }
     }
     ?>
+    <div class="container text-center card-header my-4">
+    <h3>Update Thumb Impression</h3>
+</div>
+<div class="container border">
 
-<!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
+    <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
     <form action="updateThumb.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
     <?php 
@@ -83,13 +88,15 @@ $details = mysqli_fetch_assoc($result);
         }
     ?>
     <br>
-    <input type="submit" value="Save">
-    <hr>
+    <div class="container text-center">
+
+        <input type="submit" value="Save" class="btn btn-primary">
+    </div>
+    <!-- <hr> -->
         
     </form>
 
+</div>
     <!-- Bootstrap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include '../../partials/_footer.php';?>

@@ -9,29 +9,16 @@ $user = $_SESSION['username'];
 include "../../partials/_dbconnect.php"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstap CSS file CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Manage Records</title>
-</head>
-<body>
-
 <?php
-    // Navbar is required before moving forward
-    require "../../partials/_nav.php";
+include '../includes/header.php';
 ?>
 
 
+<div class="container-fluid">
 
-<div class="container">
-    <h1>Write something about the department</h1>
-</div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Manage department</h1>
+
 <div class="container">
 
     <form action="manageDep.php" method="post" enctype="multipart/form-data">
@@ -70,9 +57,10 @@ include "../../partials/_dbconnect.php"
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
-</body>
-</html>
-
+</div>
+<?php
+include '../includes/footer.php';
+?>
 <?php
 
 if($_SERVER['REQUEST_METHOD']=='POST'){

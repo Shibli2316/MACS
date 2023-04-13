@@ -31,7 +31,8 @@ include "../../partials/_dbconnect.php"
     <?php
 
     // Navbar is required before moving forward
-    require "../../partials/_nav.php";
+    include "../../partials/_nav.php";
+    include "../../partials/_studNav.php";
 
     // Fetching the data of the logged in user.
     $sql = "SELECT * FROM `students` WHERE username = '$user'";
@@ -41,15 +42,21 @@ include "../../partials/_dbconnect.php"
     $details = mysqli_fetch_assoc($result);
     ?>
 
-<div class="container">
+<div class="container border my-4 text-center">
     <h1>
         Welcome student: <?php echo ucfirst($user);?>
     </h1>
 </div>
 
-    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
+<div class="container text-center card-header">
+    <h3>Your Profile</h3>
+</div>
 
+    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
+    <div class="container border">
+
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
+            
         <label for="name">First Name</label>
         <input type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
         <hr>
@@ -113,16 +120,17 @@ include "../../partials/_dbconnect.php"
         <hr>
         
         
-        
-        <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
-        <?php
-        echo "<a href='updatingPersonalDetails.php?name=".$details['username']."'><input type='button' value='Update'></a>"
+        <div class="container text-center">
+
+            <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
+            <?php
+        echo "<a href='updatingPersonalDetails.php?name=".$details['username']."'><input type='button' value='Update' class='btn btn-primary'></a>"
         ?>
+        </div>
 
     </form>
 
+</div>
     <!-- Bootstap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include '../../partials/_footer.php';?>

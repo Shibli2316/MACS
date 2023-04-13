@@ -9,72 +9,60 @@ $user = $_SESSION['username'];
 include "../../partials/_dbconnect.php"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstap CSS file CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Manage Records</title>
-</head>
-<body>
-
 <?php
-    // Navbar is required before moving forward
-    require "../../partials/_nav.php";
+include '../includes/header.php';
 ?>
 
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Write something about the department</h1>
 
 
-<div class="container">
-    <h1>Write something about the department</h1>
-</div>
-<div class="container">
+    <div class="container">
 
-    <form action="aboutIns.php" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="about" class="form-label">About</label>
-            <textarea class="form-control" id="about" name="about" cols="30" rows="10">
+        <form action="aboutIns.php" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="about" class="form-label">About</label>
+                <textarea class="form-control" id="about" name="about" cols="30" rows="10">
             </textarea>
-        </div>
-        <div class="mb-3">
-            <label for="detail" class="form-label">Other relevent detail</label>
-            <textarea class="form-control" id="detail" name="detail" cols="30" rows="10"> </textarea>
-        </div>
-        <div class="mb-3">
-            <label for="img" class="form-label">Image</label>
-            <input type="file" name="upload" id="img" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label">Other relevent detail</label>
+                <textarea class="form-control" id="detail" name="detail" cols="30" rows="10"> </textarea>
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Image</label>
+                <input type="file" name="upload" id="img" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
 </div>
-</body>
-</html>
-
+<?php
+include '../includes/footer.php';
+?>
 <?php
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require '../../partials/_dbconnectAdmin.php';
 
     $filename = $_FILES["upload"]["name"];
     $tempname = $_FILES["upload"]["tmp_name"];
 
-    $folder = "../images/".$filename;
+    $folder = "../images/" . $filename;
     move_uploaded_file($tempname, $folder);
 
-        $about = $_POST['about'];
-        $detail = $_POST['detail'];
-        $sql = "INSERT INTO `details` (`about`, `detail`, `imgpath`) VALUES ('$about', '$detail', '$folder');";
+    $about = $_POST['about'];
+    $detail = $_POST['detail'];
+    $sql = "INSERT INTO `details` (`about`, `detail`, `imgpath`) VALUES ('$about', '$detail', '$folder');";
 
-        $run = mysqli_query($conn, $sql);
-        if (!$run) {
-            echo "Error while updating records";
-        } else {
-            echo "<script>alert('Your records has been updated successfully!!!')</script>";
-        }
+    $run = mysqli_query($conn, $sql);
+    if (!$run) {
+        echo "Error while updating records";
+    } else {
+        echo "<script>alert('Your records has been updated successfully!!!')</script>";
+    }
 }
 
 ?>
