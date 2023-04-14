@@ -1,15 +1,15 @@
 <?php   
 
+session_start();
+
+// Assigning usernme of the logged in user into a variable for easy access.
+$user = $_SESSION['username'];
+$idUser = $_SESSION['s_id'];
+
 $insert =false;
 $update=false;
 $delete=false;
-
-$servername="localhost";
-$username="root";
-$password="";  
-$database="empfile";
-
-$conn=mysqli_connect($servername, $username, $password, $database);
+include '../../partials/_dbconnect.php';
 if ($_SERVER['REQUEST_METHOD'] =='POST'){
     $id=$_POST['id'];
     $name=$_POST['name'];
@@ -69,7 +69,7 @@ if (!$conn){
 
 <div class="container border my-4">
 
-    <form action="/emp/dataEntry.php" method="post">
+    <form action="addCat.php" method="post">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Employee ID</label>
             <input type="text" class="form-control" id="id" name="id" placeholder="123">

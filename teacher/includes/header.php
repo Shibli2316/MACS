@@ -48,12 +48,7 @@
                 Manage Students
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                View Documents
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="../duringAdmission/admitted.php">
                 <span data-feather="file-text"></span>
@@ -61,11 +56,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Remarks
+              <a class="nav-link" href="../mannualSystem/list.php">
+                <span data-feather="file-text"></span>
+                Mannual System
               </a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="../../teacher/profile/profile.php">
                 <span data-feather="settings"></span>

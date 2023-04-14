@@ -50,40 +50,58 @@ include "../../partials/_dbconnect.php"
     <div class="container text-center card-header m-2">
         <h3>Permanent Address</h3>
     </div>
-        <label for="name">House No</label>
-        <input type="text" name="p_add_hno" id="p_add_hno" placeholder="<?php if ($details['p_add_hno'] == "") {echo "Enter House Number";} else {echo $details['p_add_hno'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Locality</label>
-        <input type="text" name="p_add_locality" id="p_add_locality" placeholder="<?php if ($details['p_add_locality'] == "") {echo "Enter Locality";} else {echo $details['p_add_locality'];} ?>" readonly> <br>
-        <hr>
+<div class="mb-3 mx-5">
 
-        <label for="name">City</label>
-        <input type="text" name="p_add_city" id="p_add_city" placeholder="<?php if ($details['p_add_city'] == "") {echo "Enter City/District";} else {echo $details['p_add_city'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="state">State</label>
-        <input type="text" name="p_add_state" id="p_add_state" placeholder="<?php if ($details['p_add_state'] == "") {echo "Enter State";} else {echo $details['p_add_state'];} ?>" readonly> <br>
-        <hr>
+    <label class="form-label" for="name">House No</label>
+    <input class="form-control" type="text" name="p_add_hno" id="p_add_hno" placeholder="<?php if ($details['p_add_hno'] == "") {echo "Enter House Number";} else {echo $details['p_add_hno'];} ?>" readonly> <br>
+</div>
+
+    <div class="mb-3 mx-5">
+
+        <label class="form-label" for="name">Locality</label>
+        <input class="form-control" type="text" name="p_add_locality" id="p_add_locality" placeholder="<?php if ($details['p_add_locality'] == "") {echo "Enter Locality";} else {echo $details['p_add_locality'];} ?>" readonly> <br>
+    </div>    
+    
+<div class="mb-3 mx-5">
+
+    <label class="form-label" for="name">City</label>
+    <input class="form-control" type="text" name="p_add_city" id="p_add_city" placeholder="<?php if ($details['p_add_city'] == "") {echo "Enter City/District";} else {echo $details['p_add_city'];} ?>" readonly> <br>
+</div>
+
+    <div class="mb-3 mx-5">
+
+        <label class="form-label" for="state">State</label>
+        <input class="form-control" type="text" name="p_add_state" id="p_add_state" placeholder="<?php if ($details['p_add_state'] == "") {echo "Enter State";} else {echo $details['p_add_state'];} ?>" readonly> <br>
+    </div>    
+    
         
         <div class="container text-center card-header m-2">
         <h3>Corresponding Address</h3>
     </div>
-        <label for="name">House No</label>
-        <input type="text" name="c_add_hno" id="c_add_hno" placeholder="<?php if ($details['c_add_hno'] == "") {echo "Enter House Number";} else {echo $details['c_add_hno'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Locality</label>
-        <input type="text" name="c_add_locality" id="c_add_locality" placeholder="<?php if ($details['c_add_locality'] == "") {echo "Enter Locality";} else {echo $details['c_add_locality'];} ?>" readonly> <br>
-        <hr>
+    <div class="mb-3 mx-5">
 
-        <label for="name">City</label>
-        <input type="text" name="c_add_city" id="c_add_city" placeholder="<?php if ($details['c_add_city'] == "") {echo "Enter City/District";} else {echo $details['c_add_city'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="state">State</label>
-        <input type="text" name="c_add_state" id="c_add_state" placeholder="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" readonly> <br>
-        <hr>
+        <label class="form-label" for="name">House No</label>
+        <input class="form-control" type="text" name="c_add_hno" id="c_add_hno" placeholder="<?php if ($details['c_add_hno'] == "") {echo "Enter House Number";} else {echo $details['c_add_hno'];} ?>" readonly> <br>
+    </div>
+    
+      <div class="mb-3 mx-5">
+
+          <label class="form-label" for="name">Locality</label>
+          <input class="form-control" type="text" name="c_add_locality" id="c_add_locality" placeholder="<?php if ($details['c_add_locality'] == "") {echo "Enter Locality";} else {echo $details['c_add_locality'];} ?>" readonly> <br>
+        </div>  
+      
+<div class="mb-3 mx-5">
+
+    <label class="form-label" for="name">City</label>
+    <input class="form-control" type="text" name="c_add_city" id="c_add_city" placeholder="<?php if ($details['c_add_city'] == "") {echo "Enter City/District";} else {echo $details['c_add_city'];} ?>" readonly> <br>
+</div>
+
+      <div class="mb-3 mx-5">
+
+          <label class="form-label" for="state">State</label>
+          <input class="form-control" type="text" name="c_add_state" id="c_add_state" placeholder="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" readonly> <br>
+        </div>  
+      
         
         <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
         <!-- UPDATE THE BUTTON -->

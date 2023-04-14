@@ -92,37 +92,53 @@ $details = mysqli_fetch_assoc($result);
     ?>
     <br>
     <hr>
+<div class="mb-3 mx-5">
 
-        <label for="name">First Name</label>
-        <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>"> <br>
-        <hr>
+    <label for="name" class="form-label">First Name</label>
+    <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>" class="form-control"> <br>
+</div>
+    
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="name">Last Name</label>
+            <input class="form-control" type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>"> <br>
+        </div>
+            
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="name">Username</label>
+            <input class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
+        </div>
+            
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
+        </div>
+            
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="name">Exam</label>
+            <input class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
+        </div>
+            
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="name">Application Number</label>
+            <input class="form-control" type="text" name="form_no" id="form_no" value="<?php if ($details['form_no'] == "") {echo "Enter Application Number";} else {echo $details['form_no'];} ?>"> <br>
+        </div>
+            
+        <div class="mb-3 mx-5">
+
+            <label class="form-label" for="name">Rank</label>
+            <input class="form-control" type="text" name="rank" id="rank" value="<?php if ($details['rank'] == "") {echo "Enter your rank";} else {echo $details['rank'];} ?>"> <br>
+        </div>
+            
         
-        <label for="name">Last Name</label>
-        <input type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>"> <br>
-        <hr>
         
-        <label for="name">Username</label>
-        <input type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-        <hr>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
-        <hr>
-        
-        <label for="name">Exam</label>
-        <input type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
-        <hr>
-        
-        <label for="name">Application Number</label>
-        <input type="text" name="form_no" id="form_no" value="<?php if ($details['form_no'] == "") {echo "Enter Application Number";} else {echo $details['form_no'];} ?>"> <br>
-        <hr>
-        
-        <label for="name">Rank</label>
-        <input type="text" name="rank" id="rank" value="<?php if ($details['rank'] == "") {echo "Enter your rank";} else {echo $details['rank'];} ?>"> <br>
-        <hr>
-        
-        
-        <input type="submit" value="Save">
+        <div class="container text-center">
+            <button class="btn btn-primary my-2" id="save">Submit</button>
+        </div>
         
     </form>
 </div>

@@ -14,7 +14,7 @@ include '../includes/header.php';
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 <div class="container">
-    <h1>Displaying students data</h1>
+    <h1>Displaying mannual students data</h1>
 </div>
 
 <!-- Making table to display the records -->

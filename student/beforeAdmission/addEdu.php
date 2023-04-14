@@ -1,35 +1,60 @@
+<!-- INSERT INTO `s_education` (`s_id`, `level`, `year_passing`, `roll_no`, `board`, `result`, `grade_type`, `grade`, `certificate`) VALUES ('1', 'ssc', '2020', '123', 'cbse', 'passed', 'a', '23', 'ew'); -->
+
+
 <?php   
+
+session_start();
+
+// Assigning usernme of the logged in user into a variable for easy access.
+$user = $_SESSION['username'];
+$idUser = $_SESSION['s_id'];
 
 $insert =false;
 $update=false;
 $delete=false;
+include '../../partials/_dbconnect.php';
 
-$servername="localhost";
-$username="root";
-$password="";  
-$database="empfile";
 
-$conn=mysqli_connect($servername, $username, $password, $database);
+// $user = $_SESSION['username'];
+// $idUser = $_GET['id'];
+
 if ($_SERVER['REQUEST_METHOD'] =='POST'){
-    $id=$_POST['id'];
-    $name=$_POST['name'];
-    $designation=$_POST['designation'];
-    $address=$_POST['address'];
-    $sql = "INSERT INTO `empfile` (`id`, `name`, `designation`, `address`) VALUES ('$id', '$name', '$designation', '$address')";
-    $result= mysqli_query($conn, $sql);
-    if($result){
-        $insert = true;
-    }
-    else{
-        echo "try again";
-    }
-}
 
-if (!$conn){
-    die("Sorry access denied". mysqli_connect_error());
-}
-    
+    // $filename = $_FILES["upload"]["name"];
+    // $tempname = $_FILES["upload"]["tmp_name"];
+
+    // $folder = "../../documents/marksheet/".$filename;
+    // move_uploaded_file($tempname, $folder);
+    // Should be student id
+    // $id=$_POST['id'];
+    $level=$_POST['level'];
+    $year_passing=$_POST['year_passing'];
+    $roll_no=$_POST['roll_no'];
+    $board=$_POST['board'];
+    $result=$_POST['result'];
+    $grade_type=$_POST['grade_type'];
+    $grade=$_POST['grade'];
+
+
+    // $certificate=$_POST['upload'];
+
+
+    $sql = "INSERT INTO `s_education` (`level`, `year_passing`, `roll_no`, `board`, `result`, `grade_type`, `grade`, `certificate`) VALUES ('$level', '$year_passing', '$roll_no', '$board', '$result', '$grade_type', '$grade', 'toDO');";
+    // var_dump($sql);
+    $result= mysqli_query($conn, $sql);
+    if (!$result) {
+        echo "Error while updating records";
+    } else {
+        echo "<script>alert('Your records has been updated successfully!!!')</script>";
 ?>
+
+<!-- Redirecting to profile page -->
+        <!-- <meta http-equiv="refresh" content="0; url = uploadingAddress.php" /> -->
+<?php
+    }
+}
+?>
+    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,22 +94,38 @@ if (!$conn){
 
 <div class="container border my-4">
 
-    <form action="/emp/dataEntry.php" method="post">
+    <form action="addEdu.php" method="post">
         <div class="mb-3 mx-5 my-4">
-            <label for="id" class="form-label">Enter Employee ID</label>
-            <input type="text" class="form-control" id="id" name="id" placeholder="123">
+            <label for="id" class="form-label">Enter Level of qualification</label>
+            <input type="text" class="form-control" id="id" name="level" placeholder="SSC">
         </div>
         <div class="mb-3 mx-5">
-            <label for="empName" class="form-label">Enter Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Shibli">
+            <label for="empName" class="form-label">Year of passing</label>
+            <input type="text" class="form-control" id="name" name="year_passing" placeholder="2020">
         </div>
         <div class="mb-3 mx-5">
-            <label for="designation" class="form-label">Enter Designation</label>
-            <input type="text" class="form-control" id="designation" name="designation" placeholder="Prof">
+            <label for="designation" class="form-label">Enter Roll Number</label>
+            <input type="text" class="form-control" id="designation" name="roll_no" placeholder="123E">
         </div>
         <div class="mb-3 mx-5">
-            <label for="address" class="form-label">Enter Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Aligarh">
+            <label for="address" class="form-label">Enter Board of Studies</label>
+            <input type="text" class="form-control" id="address" name="board" placeholder="CBSC">
+        </div>
+        <div class="mb-3 mx-5">
+            <label for="address" class="form-label">Enter Result Status</label>
+            <input type="text" class="form-control" id="address" name="result" placeholder="Passed">
+        </div>
+        <div class="mb-3 mx-5">
+            <label for="address" class="form-label">Enter Grade Type</label>
+            <input type="text" class="form-control" id="address" name="grade_type" placeholder="Percentage">
+        </div>
+        <div class="mb-3 mx-5">
+            <label for="address" class="form-label">Enter Grade</label>
+            <input type="text" class="form-control" id="address" name="grade" placeholder="22%">
+        </div>
+        <div class="mb-3 mx-5">
+            <label for="address" class="form-label">Upload Certificate</label>
+            <input type="file" class="form-control" id="address" name="upload">
         </div>
         <div class="container text-center">
             <button class="btn btn-primary my-2" id="save">Submit</button>
