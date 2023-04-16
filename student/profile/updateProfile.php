@@ -43,21 +43,17 @@ $details = mysqli_fetch_assoc($result);
 // If the request method of the form is post the data to be entered into the database are stored in various variables.
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         
-    $filename = $_FILES["upload"]["name"];
-    $tempname = $_FILES["upload"]["tmp_name"];
 
-    $folder = "../../images/imagesS/profileImages/".$filename;
-    move_uploaded_file($tempname, $folder);
 
         $f_name = $_POST['f_name'];
         $l_name = $_POST['l_name'];
         $email = $_POST['email'];
         $exam = $_POST['exam'];
-        $form_no = $_POST['form_no'];
-        $rank = $_POST['rank'];
+        // $form_no = $_POST['form_no'];
+        // $rank = $_POST['rank'];
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `students` SET `s_img`='$folder',`f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam', `form_no` = '$form_no', `rank` = '$rank'  WHERE `students`.`username` = '$user';";
+        $updatingDetails = "UPDATE `students` SET `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam' WHERE `students`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -75,23 +71,14 @@ $details = mysqli_fetch_assoc($result);
 
 <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
 <div class="container border">
+
+<div class="container text-center card-header my-4">
+    <h3>Update Profile</h3>
+</div>
 <form action="updateProfile.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
-    <?php 
-        if($details['s_img'] == ""){
-            echo "<label for='name'>Upload profile image</label>";
-            echo "<input type='file' name='upload'>";
-        }
-        else{
-            echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;'><br>";
-            echo "<label for='name'>Change profile image</label>";
-            // IMPORTANT
-            // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
-            echo "<input type='file' name='upload' value='".$details['s_img']."' alt='profile image'>";
-        }
-    ?>
-    <br>
-    <hr>
+    
+    
 <div class="mb-3 mx-5">
 
     <label for="name" class="form-label">First Name</label>
@@ -122,17 +109,7 @@ $details = mysqli_fetch_assoc($result);
             <input class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
         </div>
             
-        <div class="mb-3 mx-5">
-
-            <label class="form-label" for="name">Application Number</label>
-            <input class="form-control" type="text" name="form_no" id="form_no" value="<?php if ($details['form_no'] == "") {echo "Enter Application Number";} else {echo $details['form_no'];} ?>"> <br>
-        </div>
-            
-        <div class="mb-3 mx-5">
-
-            <label class="form-label" for="name">Rank</label>
-            <input class="form-control" type="text" name="rank" id="rank" value="<?php if ($details['rank'] == "") {echo "Enter your rank";} else {echo $details['rank'];} ?>"> <br>
-        </div>
+       
             
         
         

@@ -53,7 +53,7 @@ include "../../partials/_dbconnect.php"
 <div class=" text-center card-header">
     <h3>Your Profile</h3>
 </div>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+        <form action="updatingImg.php<?php echo"?id={$details['s_id']}";?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
             <div class="container text-cente">
 
                 <?php 
@@ -65,9 +65,15 @@ include "../../partials/_dbconnect.php"
             echo "Profile Image";
         }
         ?>
+
+<?php
+        echo "<a href='updatingImg.php?id=".$details['s_id']."'><input type='button' value='Update' class='btn btn-primary'></a>"
+        ?>
         </div>
+        </form>
     <br>
     <hr>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 <div class="mb-3 mx-5">
 
     <label class="form-label" for="name">First Name</label>
@@ -98,18 +104,7 @@ include "../../partials/_dbconnect.php"
             <input class="form-control" type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
             
         </div>
-<div class="mb-3 mx-5">
 
-    <label class="form-label" for="name">Application Number</label>
-    <input class="form-control" type="text" name="form_no" id="form_no" placeholder="<?php if ($details['form_no'] == "") {echo "Enter Application Number";} else {echo $details['form_no'];} ?>" readonly> <br>
-    
-</div>
-        <div class="mb-3 mx-5">
-
-            <label class="form-label" for="name">Rank</label>
-            <input class="form-control" type="text" name="rank" id="rank" placeholder="<?php if ($details['rank'] == "") {echo "Enter your Rank";} else {echo $details['rank'];} ?>" readonly> <br>
-            
-        </div>
         
         
         <div class="container text-center">

@@ -17,7 +17,11 @@
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Genral Instruction</h1>
-            <p class="justify-content-center fs-10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis dolore excepturi mollitia consectetur debitis laudantium soluta iste blanditiis itaque, quibusdam iusto iure et quasi accusantium. Et natus debitis expedita explicabo nobis, quo nihil enim hic possimus optio quas nostrum veritatis minima voluptatibus maiores dolore excepturi rerum nemo reprehenderit unde deserunt omnis! Hic fuga dolores natus quam reprehenderit, delectus earum accusantium maxime a voluptate quos, voluptatum tempora ad quia ducimus. Nostrum voluptatibus consectetur ea maiores eveniet incidunt. Dolores exercitationem expedita ut excepturi quasi, voluptatum harum deserunt possimus iusto, pariatur cumque ipsum! Qui harum excepturi, eos rem sint temporibus voluptas minus consequatur.</p>
+            <p class="justify-content-center fs-10">Upload good quality image.</p>
+            <p class="justify-content-center fs-10">Upload good quality thumb impression.</p>
+            <p class="justify-content-center fs-10">Upload good quality signature.</p>
+            <p class="justify-content-center fs-10">Ears should be visible.</p>
+            <p class="justify-content-center fs-10">Dont wear glasses</p>
         </div>
     </div>
 </div>

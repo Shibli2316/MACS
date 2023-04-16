@@ -23,7 +23,7 @@
     <h5 class="card-title">Application for</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo "LEVEL";?></h6>
     <p class="card-text">You have filled your form, for further actions click the links provided below.</p>
-    <a href="#" class="card-link">Download</a>
+    <!-- <a href="#" class="card-link">Download</a> -->
     <a href="#" class="card-link">View</a>
   </div>
 </div>

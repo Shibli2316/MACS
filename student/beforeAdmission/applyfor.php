@@ -30,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
     // $certificate=$_POST['upload'];
 
 
-    $sql = "UPDATE `students` SET `level`='$level', `course`='$course' WHERE username='$user';";
+    $appNum = '202305';
+    $random = rand(10,100);
+    $appNum = $appNum+$random;
+    $sql = "UPDATE `students` SET `level`='$level', `course`='$course', `form_no`='$appNum' WHERE username='$user';";
+    // echo $appNum;
     // var_dump($sql);
     $result= mysqli_query($conn, $sql);
     if (!$result) {
@@ -81,9 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
                         <div class="col-md-6">
                             <select class="form-control" name="level" id="">
                                 <option value="0">--SELECT--</option>
-                                <option value="1">UG</option>
-                                <option value="2">PG</option>
-                                <option value="3">School</option>
+                                <option value="UG">UG</option>
+                                <option value="PG">PG</option>
+                                <option value="School">School</option>
                             </select>
                         </div>
                     </div>
@@ -96,9 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
                         <div class="col-md-6">
                             <select class="form-control" name="course" id="">
                                 <option value="0">--SELECT--</option>
-                                <option value="1">UG</option>
-                                <option value="2">PG</option>
-                                <option value="3">School</option>
+                                <option value="Science">Science</option>
+                                <option value="Commerse">Commerse</option>
+                                <option value="Arts">Arts</option>
                             </select>
                         </div>
                     </div>

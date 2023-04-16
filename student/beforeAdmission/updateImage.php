@@ -7,8 +7,9 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
+// echo $user;
 $idUser = $_GET['user'];
-
+// echo $idUser;
 // Including the connection file of the database.
 include "../../partials/_dbconnect.php"
 ?>

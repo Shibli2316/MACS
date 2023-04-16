@@ -1,8 +1,8 @@
 <?php
-// The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
+// The session class='form-label' for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
 session_start();
 
-// Assigning usernme of the logged in user into a variable for easy access.
+// Assigning usernme of the logged in user into a variable class='form-label' for easy access.
 $user = $_SESSION['username'];
 
 // Including the connection file of the database.
@@ -43,7 +43,7 @@ include "../../partials/_dbconnect.php"
 
             <?php
             if ($details['t_img'] == "") {
-                echo "<label for='name'>Upload profile image</label>";
+                echo "<label class='form-label' for='name'>Upload profile image</label>";
             } else {
                 echo "<img src='" . $details['t_img'] . "' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
                 echo "Profile Image";
@@ -52,24 +52,24 @@ include "../../partials/_dbconnect.php"
             <br>
             <hr>
 
-            <label for="name">First Name</label>
-            <input type="text" name="f_name" id="f_name" readonly placeholder="<?php if ($details['f_name'] == "") {echo "Enter first name";} else {echo $details['f_name'];} ?>"> <br>
+            <label class='form-label' for="name">First Name</label>
+            <input  class="form-control" type="text" name="f_name" id="f_name" readonly placeholder="<?php if ($details['f_name'] == "") {echo "Enter first name";} else {echo $details['f_name'];} ?>"> <br>
             <hr>
 
-            <label for="name">Last Name</label>
-            <input type="text" name="l_name" id="l_name" readonly placeholder="<?php if ($details['l_name'] == "") {echo "Enter last name";} else {echo $details['l_name'];} ?>"> <br>
+            <label class='form-label' for="name">Last Name</label>
+            <input  class="form-control" type="text" name="l_name" id="l_name" readonly placeholder="<?php if ($details['l_name'] == "") {echo "Enter last name";} else {echo $details['l_name'];} ?>"> <br>
             <hr>
 
-            <label for="name">Username</label>
-            <input type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
+            <label class='form-label' for="name">Username</label>
+            <input  class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
             <hr>
 
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" readonly placeholder="<?php if ($details['email'] == "") {echo "Enter email";} else {echo $details['email'];} ?>"> <br>
+            <label class='form-label' for="email">Email</label>
+            <input  class="form-control" type="email" name="email" id="email" readonly placeholder="<?php if ($details['email'] == "") {echo "Enter email";} else {echo $details['email'];} ?>"> <br>
             <hr>
 
-            <label for="name">Teacher ID</label>
-            <input type="text" name="teacherID" id="teacherID" readonly placeholder="<?php if ($details['teacherID'] == "") {echo "Enter Employee ID";} else {echo $details['teacherID'];} ?>"> <br>
+            <label class='form-label' for="name">Teacher ID</label>
+            <input  class="form-control" type="text" name="teacherID" id="teacherID" readonly placeholder="<?php if ($details['teacherID'] == "") {echo "Enter Employee ID";} else {echo $details['teacherID'];} ?>"> <br>
             <hr>
 
             <!-- The update button directing the user to the update page from where he or she can update his/her profile -->

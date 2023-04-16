@@ -58,6 +58,8 @@ include '../includes/header.php';
   <form action="verify.php?id=<?=$id?>" method="post">
     <label for="remark">Make Remark</label>
     <input name="remark" type="text" placeholder="Enter Remark">
+    <label for="remark">Subject</label>
+    <input name="sub" type="text" placeholder="Subject Alloted">
     <br>
     <hr>
     <label for="admit">Verifed</label>

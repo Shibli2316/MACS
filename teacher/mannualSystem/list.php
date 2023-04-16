@@ -30,7 +30,7 @@ include '../includes/header.php';
       <th scope="col">Rank</th>
       <th scope="col">View Documents</th>
       <th scope="col">View Details</th>
-      <th scope="col">Admit</th>
+      
       
 
     </tr>
@@ -62,15 +62,7 @@ if($howManyRows>0){
           <td>".$row['rank']."</td>
           <td><a href='studDoc.php?id=".$sID."'><button class='btn btn-primary btn-success'>View</button></a></td>
           <td><a href='studTemp.php?id=".$sID."'><button class='btn btn-primary btn-success'>View</button></a></td>
-          <td>
-        <form action=''>
-        <select name='' id=''>
-        <option value=''>--SELECT--</option>
-        <option value=''>Yes</option>
-        <option value=''>No</option>
-        </select>
-        </form>
-        </td>
+          
           
         </tr>
       </tbody>";

@@ -37,7 +37,7 @@ include "../../partials/_dbconnect.php"
     require "../../partials/_nav.php";
     include "../../partials/_studNav.php";
     // Fetching the data of the logged in user.
-    $sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
+    $sql = "SELECT * FROM `s_specifics` WHERE s_id = '$idUser'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
