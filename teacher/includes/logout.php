@@ -10,6 +10,6 @@ session_unset();
 session_destroy();
 
 // The user is redirected to the home page
-header("location: ../profile/login.php");
+header("location: ../");
 exit;
 ?>

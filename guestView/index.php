@@ -35,7 +35,7 @@
                     <img src='../images/updated71.jpg' alt='myphoto' class='jarallax-img'>
                 </div>
                 <div class='content' data-jarallax-element='-200 0'>
-                    <p class='aboutme'>During the start of the semister, there was a lot of confusion relating admission and counseling.  To tackel this problem we developed the <strong>MACS</strong>. With the help of this project the teacher and students will be be notified about the counselling. Feeling good? <a href="login.php" style="color: blanchedalmond;"><i>Join Us</i></a></p>
+                    <p class='aboutme'>During the start of the semister, there was a lot of confusion relating subject selection. Not just for students but also for teachers. To tackel this problem we developed the <strong>Multiinstitutional Admission Counseling System</strong>. With the help of this project the teacher and students will be be notified about the subjects instantly. Feeling good? <a href="join.php" style="color: blanchedalmond;"><i>Join Us</i></a></p>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <img src='../images/Snapchat-422098502.jpg' alt='myphoto' class='jarallax-img'>
                 </div>
                 <div class='content' data-jarallax-element='-200 0'>
-                    <p class='aboutme'>We have developed various modules like admin, teacher, student. We belive that information should be free and fast moving. We have kept the design minimal to avoid complexity in navigation too.</p>
+                    <p class='aboutme'>We have developed various modules like admin, teacher, student. They all have their own functionality. In addition to it we have a <a href="noticegenral.php" style="color: blanchedalmond;"><strong><i>Notice</i></strong></a> module that is open to all. As we belive that information should be free and fast moving. We have kept the design minimal to avoid complexity in navigation too.</p>
                 </div>
             </div>
         </div>
@@ -60,10 +60,10 @@
             <h2 data-jarallax-element='0 200'>The Cynicals</h2>
             <div class='container'>
                 <div class='imgBx jarallax'>
-                    <img src='../images/improved.jpg' alt='myphoto' class='jarallax-img'>
+                    <img src='../images/me.jpg' alt='myphoto' class='jarallax-img'>
                 </div>
                 <div class='content' data-jarallax-element='-200 0'>
-                    <p class='aboutme'>I developed a full fledged web application that is capable of displaying information accross the modules. It took us more than 100 hours to develop it and to know more about our synical nature click <a href="about.php" style="text-decoration: none; color: blanchedalmond;">here</a></p>
+                    <p class='aboutme'>I developed a full fledged web application that is capable of displaying information accross the modules. It took me more than 100 hours to develop it and to know more about our synical nature click <a href="about.php" style="text-decoration: none; color: blanchedalmond;">here</a></p>
                 </div>
             </div>
         </div>

@@ -9,17 +9,12 @@ echo "
             </button>
             <div class='collapse navbar-collapse' id='navbarNav'>
                 <ul class='navbar-nav ms-auto'>
+                    
                     <li class='nav-item'>
-                        <a class='nav-link' href='../admin/login.php'>Admin</a>
+                        <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='../teacher/login.php'>Teacher</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='../student/login.php'>Student</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='../guestView/login.php'>Guest</a>
+                        <a class='nav-link' href='../afterAdmission/accept.php'>Admission</a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='../../partials/logout.php'>logout</a>

@@ -45,6 +45,7 @@ $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.
 $details = mysqli_fetch_assoc($result);
+$id=$details['s_id'];
 // var_dump($details);
 
 // var_dump($details);
@@ -124,13 +125,81 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
             <label class="form-label" for="name">Course</label>
             <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['course'] == "") {echo "Enter course";} else {echo $details['course'];} ?>"> <br>
         </div>
-            
-        <div class="mb-3 mx-5 text-center">
-            <a href="dashboard.php"><button class="btn btn-primary">Back</button></a>
+                        
+</div>
+
+
+<?php
+
+// Navbar is required before moving forward
+include "../../partials/_dbconnect.php";
+
+// Fetching the data of the logged in user.
+$sql = "SELECT
+*
+FROM verify
+JOIN students
+ON verify.sid = students.s_id
+WHERE students.s_id='$id';";
+$result = mysqli_query($conn, $sql);
+
+// Storing it into an associative array called details.
+$details = mysqli_fetch_assoc($result);
+
+?>
+
+
+<div class="container">
+
+    
+        
+    <div class="card my-4 text-center">
+        <div class="card-header text-center">
+                Accept admission
+            </div>
+            <div class="card-body text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="sub">Document verified</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" readonly value="<?=$details['verified']?>">
+                            
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="sub">Subject Alloted</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" readonly value="<?=$details['sub']?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <form action="accept.php" method="post">
+                <div class="container my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="sub">Accept</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" name="accept" id="">
+                                <option value="0">--SELECT--</option>
+                                <option value="7">Yes</option>
+                                <option value="4">No</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary mx-auto" value="SAVE">
+            </div>
         </div>
         
-            
-            
+    </form>
 </div>
     <!-- Bootstrap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -138,3 +207,24 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
 </body>
 
 </html>
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+$accept=$_POST['accept'];
+// The updating query being executed.
+        $updatingDetails = "UPDATE `verify` SET `accept`='$accept' WHERE `verify`.`id` = '$id';";
+        $run = mysqli_query($conn, $updatingDetails);
+        if (!$run) {
+            echo "Error while updating records";
+        } else {
+            echo "<script>alert('Your records has been updated successfully!!!')</script>";
+    ?>
+
+<!-- Redirecting to profile page -->
+            <!-- <meta http-equiv="refresh" content="0; url = uploadingImages.php" /> -->
+    <?php
+        }
+    }
+    ?>
