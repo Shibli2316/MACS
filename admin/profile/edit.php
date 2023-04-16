@@ -1,16 +1,15 @@
 <?php
 // The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
-session_start();
+
 
 // Assigning usernme of the logged in user into a variable for easy access.
+include '../includes/header.php';
 $user = $_SESSION['username'];
 
 // Including the connection file of the database.
 include "../../partials/_dbconnectAdmin.php"
 ?>
-<?php
-include '../includes/header.php';
-?>
+
     <?php
 
     // Fetching the data of the logged in user.
@@ -59,32 +58,42 @@ include '../includes/header.php';
     
     <form action="edit.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
+<div class="container text-center">
 
     <?php 
         if($details['a_img'] == ""){
-            echo "<label for='name'>Upload profile image</label>";
-            echo "<input type='file' name='upload'>";
+            echo "<label class='form-label' for='name'>Upload profile image</label>";
+            echo "<input class='form-control' type='file' name='upload'>";
         }
         else{
             echo "<img src='".$details['a_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
-            echo "<label for='name'>Change profile image</label>";
+            echo "<label class='form-label' for='name'>Change profile image</label>";
             // IMPORTANT
             // THE VALUE TAG IS NOT WORKING AS EXPECTED
-            echo "<input type='file' name='upload' value='".$details['a_img']."' alt=profile image'>";
+            echo "<input class='form-control' type='file' name='upload' value='".$details['a_img']."' alt=profile image'>";
         }
-    ?>
+        ?>
+        </div>
     <br>
     <hr>
 
-        <label for="name">Name</label>
-        <input type="text" name="f_name" id="f_name" value="<?php if ($details['name'] == "") {echo "Enter First Name";} else {echo $details['name'];} ?>"> <br>
-        <hr>
+    <div class="mb-3 mx-5">
+        <label class='form-label' for="name">Name</label>
+        <input class='form-control' type="text" name="f_name" id="f_name" value="<?php if ($details['name'] == "") {echo "Enter First Name";} else {echo $details['name'];} ?>"> <br>
+
+        </div>
+        <br>
         
-        <label for="name">Username</label>
-        <input type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-        <hr>
-        
-        <input type="submit" value="Save">
+        <div class="mb-3 mx-5">
+        <label class='form-label' for="name">Username</label>
+        <input class='form-control' type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
+
+        </div>
+        <br>
+        <div class="container text-center">
+
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
 
     </form>
 

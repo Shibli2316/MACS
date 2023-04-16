@@ -1,40 +1,44 @@
 <?php
 // The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
-session_start();
 
+include "../../partials/_dbconnect.php";
+include '../includes/header.php';
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
+$id = $_GET['id'];
 
 // Including the connection file of the database.
-include "../../partials/_dbconnect.php";
-
-// Getting the id from the URL
-$id = $_GET['id'];
-// echo $id;
-
-include '../includes/header.php';
-
-
-// Fetching the data of the logged in user.
-$sql = "SELECT
-*
-FROM students
-JOIN s_education
-ON students.s_id = s_education.s_id
-JOIN s_specifics
-ON s_specifics.s_id = s_education.s_id WHERE students.s_id='$id';";
-$result = mysqli_query($conn, $sql);
-
-// Storing it into an associative array called details.
-$details = mysqli_fetch_assoc($result);
-// var_dump($details);
-
-// var_dump($details);
-
-
+// include "../../partials/_dbconnect.php"
 ?>
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">View the students</h1>
+
+
+    <?php
+
+    // Navbar is required before moving forward
+
+
+    // Fetching the data of the logged in user.
+    $sql = "SELECT
+    *
+    FROM students
+    JOIN s_education
+    ON students.s_id = s_education.s_id
+    JOIN s_specifics
+    ON s_specifics.s_id = s_education.s_id WHERE students.s_id='$id';";
+    $result = mysqli_query($conn, $sql);
+    
+    // Storing it into an associative array called details.
+    $details = mysqli_fetch_assoc($result);
+    
+    // var_dump($details);
+
+    // var_dump($details);
+
+
+    ?>
 
 <div class="container border my-4">
 <!-- <form action="updateProfile.php?name=" class="mx-2 my-2" method="post" enctype="multipart/form-data"> -->
@@ -112,32 +116,12 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
             
 </div>
 
+    <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
 
 
-  <div class="container border mx-auto my-4">
-    <form action="verify.php?id=<?= $id ?>" method="post">
-      <label class="form-label" for="remark">Make Remark</label>
-      <input class="form-control" type="text" name="remark" placeholder="Enter Remark">
-      <br>
-      <label class="form-label" for="remark">Alloted Subject</label>
-      <input class="form-control" type="text" name="sub" placeholder="Enter Subject">
-      <br>
-      
-      <label class="form-label" for="admit">Admit Student</label>
-      <select class="form-control" name="verified" id="">
-        <option value="NULL">--SELECT--</option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      <br>
-      <div class="container text-center">
-
-        <button class="btn btn-secondary">SAVE</button>
-      </div>
-    </form>
-  </div>
-
-</main>
+</div>
+<!-- Bootstap JS file CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <?php
 include '../includes/footer.php';
 ?>

@@ -6,7 +6,7 @@ session_start();
 $user = $_SESSION['username'];
 
 // Including the connection file of the database.
-include "../../partials/_dbconnect.php"
+include "../../partials/_dbconnect.php";
 ?>
 
 <?php
@@ -14,7 +14,9 @@ include '../includes/header.php';
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 <div class="container">
-    <h1>Displaying students data</h1>
+<div class="container text-center card-header my-4">
+    <h3>View students</h3>
+</div>
 </div>
 
 <!-- Making table to display the records -->

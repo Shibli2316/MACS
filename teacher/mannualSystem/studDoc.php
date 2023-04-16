@@ -27,51 +27,80 @@ if($result && (mysqli_num_rows($result)==1)){
 include '../includes/header.php';
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Marksheet</th>
-      <th scope="col">Category</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-    echo "
-    <tr>
-      <th scope='row'>".$res['s_id']."</th>
-      <td>".$res['f_name']."</td>
-      <td> <img src='../".$res['s_img']."' alt='Student Image' height='100px' width='100px' style='border-radius:50%;'></td>
-      <td>".$res['mother_name']."</td>
-      <td>".$res['aadhar']."</td>
-    </tr>
-";
+<?php
+
+    // Navbar is required before moving forward
+    
+    // Fetching the data of the logged in user.
+    $sql = "SELECT * FROM `s_specifics` WHERE s_id = '$id'";
+    $result = mysqli_query($conn, $sql);
+
+    // Storing it into an associative array called details.
+    $details = mysqli_fetch_assoc($result);
     ?>
-  </tbody>
-</table>
 
-
-<div class="container border mx-auto my-4">
-  <form action="verify.php?id=<?=$id?>" method="post">
-    <label for="remark">Make Remark</label>
-    <input name="remark" type="text" placeholder="Enter Remark">
-    <label for="remark">Subject</label>
-    <input name="sub" type="text" placeholder="Subject Alloted">
-    <br>
-    <hr>
-    <label for="admit">Verifed</label>
-    <select name="verified" id="">
-      <option value="NULL">--SELECT--</option>
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select>
-    <br><hr>
-    <button>SAVE</button>
-  </form>
+<div class="container text-center card-header my-4">
+    <h3>View Images</h3>
 </div>
+
+    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button  class='btn btn-primary'to update his/her details. -->
+    <div class="container border row text-center mx-auto">
+<div class="col-md-4 my-4">
+
+    
+<?php 
+        if($details['s_img'] == ""){
+            echo "<label for='name'>Profile image</label>";
+        }
+        else{
+            echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
+            echo "Profile Image";
+        }
+    ?>
+    <br>
+
+
+    </div>
+<div class="col-md-4 my-4">
+
+   
+        
+    <?php 
+        if($details['s_sign'] == ""){
+            echo "<label for='name'>Student signature</label>";
+        }
+        else{
+            echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;' alt='Student Signature'><br>";
+            echo "Student Signature";
+        }
+        ?>
+    <br>
+
+
+
+
+</div>
+
+<div class="col-md-4 my-4">
+    
+    
+
+    <?php 
+        if($details['s_thumb'] == ""){
+            echo "<label for='name'>Student thumb impression</label>";
+        }
+        else{
+            echo "<img src='".$details['s_thumb']."' height='100px' width='100px' style='border-radius:50%;' alt='Thumb Impression'><br>";
+            echo "Thumb Impression";
+        }
+        ?>
+    <br>
+
+</div>
+
+</div>
+    <!-- Bootstap JS file CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </main>
 
 <?php

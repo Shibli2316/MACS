@@ -88,24 +88,44 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
             
         <div class="mb-3 mx-5">
 
-            <label class="form-label" for="name">Username</label>
-            <input readonly class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-        </div>
-            
-        <div class="mb-3 mx-5">
-
             <label class="form-label" for="email">Email</label>
             <input readonly class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
         </div>
             
         <div class="mb-3 mx-5">
-
             <label class="form-label" for="name">Exam</label>
             <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
         </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Father Name</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['father_name'] == "") {echo "Enter Father Name";} else {echo $details['father_name'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Mother Name</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['mother_name'] == "") {echo "Enter Mother Name";} else {echo $details['mother_name'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">DOB</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['dob'] == "") {echo "Enter DOB";} else {echo $details['dob'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Gender</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['gender'] == "") {echo "Enter Gender";} else {echo $details['gender'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Disability</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['disability'] == "") {echo "Enter Disability";} else {echo $details['gender'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Applied for</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['level'] == "") {echo "Applied for";} else {echo $details['level'];} ?>"> <br>
+        </div>
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="name">Course</label>
+            <input readonly class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['course'] == "") {echo "Enter course";} else {echo $details['course'];} ?>"> <br>
+        </div>
             
         <div class="mb-3 mx-5 text-center">
-
             <a href="dashboard.php"><button class="btn btn-primary">Back</button></a>
         </div>
         

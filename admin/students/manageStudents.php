@@ -1,7 +1,8 @@
 <?php
 // The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
-session_start();
 
+
+include '../includes/header.php';
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
 
@@ -9,14 +10,10 @@ $user = $_SESSION['username'];
 include "../../partials/_dbconnect.php"
 ?>
 
-<?php
-include '../includes/header.php';
-?>
-
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800">Write something about the department</h1>
+  <h1 class="h3 mb-4 text-gray-800">View the students who filled the form</h1>
 
   <div class="container-fluid">
 
@@ -52,6 +49,7 @@ include '../includes/header.php';
       $howManyRows = mysqli_num_rows($run);
       if ($howManyRows > 0) {
         while ($row = mysqli_fetch_assoc($run)) {
+          $sID= $row['s_id'];
           echo "
         <tbody>
         <tr>
@@ -62,8 +60,8 @@ include '../includes/header.php';
           <td>" . $row['email'] . "</td>
           <td>" . $row['exam'] . "</td>
           <td>" . $row['rank'] . "</td>
-          <td><a href='#'><button class='btn btn-primary btn-primary'>View</button></a></td>
-          <td><a href='#'><button class='btn btn-primary btn-success'>View</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a></td>
+          <td><a href='studDoc.php?id=".$sID."'><button class='btn btn-primary btn-primary'>View</button></a></td>
+          <td><a href='view.php?id=".$sID."'><button class='btn btn-primary btn-success'>View</button></a></td>
         </tr>
       </tbody>";
           $sno = $sno + 1;

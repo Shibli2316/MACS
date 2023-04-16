@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// Assigning usernme of the logged in user into a variable for easy access.
+$user = $_SESSION['username'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +97,7 @@
                         <h6 class="collapse-header">Manage Users:</h6>
                         <a class="collapse-item" href="../teachers/manageTeachers.php">Teachers</a>
                         <a class="collapse-item" href="../students/manageStudents.php">Students</a>
-                        <a class="collapse-item" href="#">Admission</a>
+                        <a class="collapse-item" href="#">Rejected</a>
                         <a class="collapse-item" href="#">Admitted</a>
                     </div>
                 </div>
@@ -208,9 +216,9 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- <i class="fas fa-bell fa-fw"></i> -->
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <!-- <span class="badge badge-danger badge-counter">3+</span> -->
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -259,9 +267,9 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- <i class="fas fa-envelope fa-fw"></i> -->
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"

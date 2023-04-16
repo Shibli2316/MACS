@@ -40,8 +40,9 @@ include "../../partials/_dbconnect.php"
 
         <!-- In this form the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+<div class="container text-center">
 
-            <?php
+    <?php
             if ($details['t_img'] == "") {
                 echo "<label class='form-label' for='name'>Upload profile image</label>";
             } else {
@@ -50,38 +51,51 @@ include "../../partials/_dbconnect.php"
             }
             ?>
             <br>
+        </div>
             <hr>
 
+            <div class="mb-3 mx-5">
             <label class='form-label' for="name">First Name</label>
             <input  class="form-control" type="text" name="f_name" id="f_name" readonly placeholder="<?php if ($details['f_name'] == "") {echo "Enter first name";} else {echo $details['f_name'];} ?>"> <br>
-            <hr>
 
+            </div>
+
+            <div class="mb-3 mx-5">
             <label class='form-label' for="name">Last Name</label>
             <input  class="form-control" type="text" name="l_name" id="l_name" readonly placeholder="<?php if ($details['l_name'] == "") {echo "Enter last name";} else {echo $details['l_name'];} ?>"> <br>
-            <hr>
 
+            </div>
+
+            <div class="mb-3 mx-5">
             <label class='form-label' for="name">Username</label>
             <input  class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
-            <hr>
 
+            </div>
+
+            <div class="mb-3 mx-5">
             <label class='form-label' for="email">Email</label>
             <input  class="form-control" type="email" name="email" id="email" readonly placeholder="<?php if ($details['email'] == "") {echo "Enter email";} else {echo $details['email'];} ?>"> <br>
-            <hr>
 
+            </div>
+
+            <div class="mb-3 mx-5">
             <label class='form-label' for="name">Teacher ID</label>
             <input  class="form-control" type="text" name="teacherID" id="teacherID" readonly placeholder="<?php if ($details['teacherID'] == "") {echo "Enter Employee ID";} else {echo $details['teacherID'];} ?>"> <br>
-            <hr>
 
-            <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
-            <?php
-            echo "<a href='updateProfile.php?name=" . $details['username'] . "'><input type='button' value='Update'></a>"
+            </div>
+<div class="container text-center mb-3 mx-5">
+
+    <!-- The update button directing the user to the update page from where he or she can update his/her profile -->
+    <?php
+            echo "<a href='updateProfile.php?name=" . $details['username'] . "'><input type='button' value='Update' class='btn btn-primary'></a>"
             ?>
+            </div>
 
         </form>
 
-    </main>
-    <!-- Bootstap JS file CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <?php
     include '../../teacher/includes/footer.php';
     ?>
+    </main>
+    <!-- Bootstap JS file CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

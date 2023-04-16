@@ -1,6 +1,6 @@
 <?php
 // The session for the logged in user is relayed to this page using the session start tag. In case the session is not started it will start the session.
-session_start();
+include '../includes/header.php';
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
@@ -22,11 +22,7 @@ if($result && (mysqli_num_rows($result)==1)){
 }
 ?>
 
-
-<?php 
-include '../includes/header.php';
-?>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+<div class="container-fluid">
 <?php
 
     // Navbar is required before moving forward
@@ -39,7 +35,7 @@ include '../includes/header.php';
     $details = mysqli_fetch_assoc($result);
     ?>
 
-<div class="container text-center card-header my-4">
+<div class="container">
     <h3>View Images</h3>
 </div>
 
@@ -101,8 +97,7 @@ include '../includes/header.php';
 </div>
     <!-- Bootstap JS file CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</main>
-
+    </div>
 <?php
 include '../includes/footer.php';
 ?>

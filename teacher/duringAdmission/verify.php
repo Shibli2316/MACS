@@ -21,13 +21,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     // $image = $_POST['image'];
     $remark = $_POST['remark'];
     $verified = $_POST['verified'];
+    $sub = $_POST['sub'];
 
     
 
 
 
-    $sql = "INSERT INTO `verify` (`sid`, `tid`, `remark`, `verified`) 
-    VALUES ('$id', '$user', '$remark', '$verified');";
+    $sql = "INSERT INTO `verify` (`sid`, `tid`, `remark`, `verified`, `sub`) 
+    VALUES ('$id', '$user', '$remark', '$verified', '$sub');";
 // var_dump($sql);
 
     $result = mysqli_query($conn, $sql);
