@@ -16,26 +16,26 @@ include "../../partials/_dbconnectAdmin.php";
     <h1 class="h3 mb-4 text-gray-800">Write something about the department</h1>
 
     <?php
-    $sql = "SELECT * FROM details;";
+    $sql = "SELECT * FROM details where id=6;";
     $run = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($run) > 0) {
-        while ($row = mysqli_fetch_assoc($run)) {
-            echo "
-            <p>" . $row['about'] . "</p>
-            <img src=" . $row['imgpath'] . " alt='image'style='height: 100px; width: 100px;'/>
-            <p>" . $row['detail'] . "</p>
+    $row = mysqli_fetch_assoc($run);
+    echo "
+    <div class='container text-center'>
+    <img src=" . $row['imgpath'] . " alt='image'style='height: 300px; width: 300px;'/>
+    <br><hr>
+
+    
+    <p>" . $row['about'] . "</p>
+    <p>" . $row['detail'] . "</p>
+    </div>
             <hr>
             ";
-        }
-    }
+        
+    
 
     ?>
 
-
-    <div class="container">
-
-        <a href="aboutIns.php" class="btn btn-primary">Submit</a>
-    </div>
+    
 
 </div>
 <?php

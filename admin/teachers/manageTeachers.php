@@ -16,7 +16,7 @@ include "../../partials/_dbconnect.php"
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Manage Teachers</h1>
+    <h1 class="h3 mb-4 text-gray-800">View Teachers</h1>
 
 <div class="container">
 

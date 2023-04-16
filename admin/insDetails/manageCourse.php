@@ -18,7 +18,7 @@ $user = $_SESSION['username'];
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Write something about the department</h1>
+    <h1 class="h3 mb-4 text-gray-800">Add Courses</h1>
 
 <div class="container">
 
@@ -72,7 +72,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             echo "Error while updating records";
         } else {
             echo "<script>alert('Your records has been updated successfully!!!')</script>";
-        }
-}
+            ?>
 
-?>
+            <!-- Redirecting to profile page -->
+                        <meta http-equiv="refresh" content="0; url = courseList.php" />
+                <?php
+                    }
+                }
+                ?>

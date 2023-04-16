@@ -18,7 +18,7 @@ $user = $_SESSION['username'];
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">notice List</h1>
+    <h1 class="h3 mb-4 text-gray-800">Notice List</h1>
 
 
 <!-- Making table to display the records -->
@@ -50,6 +50,7 @@ if(!$run){
 $howManyRows = mysqli_num_rows($run);
 if($howManyRows>0){
     while($row = mysqli_fetch_assoc($run)){
+      $id=$row['id'];
         echo "
         <tbody>
         <tr>
@@ -59,7 +60,13 @@ if($howManyRows>0){
           <td>".$row['about']."</td>
           <td>".$row['timestamp']."</td>
 
-          <td><a href='manageDep.php'><button class='btn btn-primary btn-success'>Update</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a><hr><a href='#'><button class='btn btn-primary'>View</button></a></td>
+          <td>
+          
+          <a href='updateNotice.php?id=".$id."'><button class='btn btn-primary btn-success'>Update</button></a><hr>
+          
+          <form action='delNotice.php?id=".$id."' method='post'>
+          <button class='btn btn-danger btn-danger'>Delete</button></td>
+          </form>
         </tr>
       </tbody>";
         $sno = $sno+1;

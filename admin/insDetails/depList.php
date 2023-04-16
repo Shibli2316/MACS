@@ -55,6 +55,7 @@ if(!$run){
 $howManyRows = mysqli_num_rows($run);
 if($howManyRows>0){
     while($row = mysqli_fetch_assoc($run)){
+      $id=$row['id'];
         echo "
         <tbody>
         <tr>
@@ -67,8 +68,17 @@ if($howManyRows>0){
           <td>".$row['noOfTeacher']."</td>
           <td>".$row['noOfStud']."</td>
           <td>".$row['noOfCourse']."</td>
-          <td><a href='manageDep.php'><button class='btn btn-primary btn-success'>Update</button></a><hr><a href='#'><button class='btn btn-danger btn-danger'>Delete</button></a><hr><a href='#'><button class='btn btn-primary'>View</button></a></td>
-        </tr>
+          <td><a href='upDep.php?id=".$id."'><button class='btn btn-primary btn-success'>Update</button></a><hr>
+          <form action='delDep.php?id=".$id."' method='post'>
+          <button class='btn btn-danger btn-danger'>Delete</button>
+          </form>
+          
+          
+          </td>
+        
+        
+          </tr>
+
       </tbody>";
         $sno = $sno+1;
     }

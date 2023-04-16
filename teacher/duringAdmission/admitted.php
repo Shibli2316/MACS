@@ -36,7 +36,7 @@ include '../includes/header.php';
 $sno = 1;
 
 // Fetching students records
-$fetching = "SELECT * from verify join students on verify.sid=students.s_id WHERE verified=1;";
+$fetching = "SELECT * from verify join students on verify.sid=students.s_id WHERE verified=1 AND tid='$user';";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";

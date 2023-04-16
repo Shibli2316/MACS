@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $username;
 
                 // Once logged in the user is redirected to the page given below
-                header("location: ../admin");
+                header("location: ../admin/index/");
             }
 
             // Show error if the password is incorrect.

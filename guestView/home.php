@@ -1,18 +1,81 @@
-<?php
-echo "this is home";
-?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='../css/jarallax.css'>
+    <link rel='stylesheet' href='../css/about.css'>
     <title>MACS</title>
 </head>
+
 <body>
-    <p>
-        This is the guest view of the admins. For them to make account and register.
-    </p>
+
+    <section>
+        <div class='box'>
+            <h2 data-jarallax-element='0 -200'>MACS</h2>
+            <div class='container'>
+                <div class='imgBx jarallax'>
+                    <img src='../images/Snapchat-1047723913.jpg' alt='myphoto' class='jarallax-img'>
+                </div>
+                <div class='content' data-jarallax-element='-200 0'>
+                    <p class='aboutme'>Everyday, students are occupied by a lot of things, exams, assignments friends and a lot more. At times we miss small details about the things that happens on a daily basis. To tackel such problem we present you <strong><i>MACS</i></strong>. Its the new way of remember the small stuff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class='box'>
+            <h2 data-jarallax-element='0 200'>Our Motive</h2>
+            <div class='container'>
+                <div class='imgBx jarallax'>
+                    <img src='../images/updated71.jpg' alt='myphoto' class='jarallax-img'>
+                </div>
+                <div class='content' data-jarallax-element='-200 0'>
+                    <p class='aboutme'>During the start of the semister, there was a lot of confusion relating admission and counseling.  To tackel this problem we developed the <strong>MACS</strong>. With the help of this project the teacher and students will be be notified about the counselling. Feeling good? <a href="login.php" style="color: blanchedalmond;"><i>Join Us</i></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class='box'>
+            <h2 data-jarallax-element='0 -200'>the MACS work</h2>
+            <div class='container'>
+                <div class='imgBx jarallax'>
+                    <img src='../images/Snapchat-422098502.jpg' alt='myphoto' class='jarallax-img'>
+                </div>
+                <div class='content' data-jarallax-element='-200 0'>
+                    <p class='aboutme'>We have developed various modules like admin, teacher, student. We belive that information should be free and fast moving. We have kept the design minimal to avoid complexity in navigation too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class='box'>
+            <h2 data-jarallax-element='0 200'>The Cynicals</h2>
+            <div class='container'>
+                <div class='imgBx jarallax'>
+                    <img src='../images/improved.jpg' alt='myphoto' class='jarallax-img'>
+                </div>
+                <div class='content' data-jarallax-element='-200 0'>
+                    <p class='aboutme'>I developed a full fledged web application that is capable of displaying information accross the modules. It took us more than 100 hours to develop it and to know more about our synical nature click <a href="about.php" style="text-decoration: none; color: blanchedalmond;">here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src='jarallax.js'></script>
+    <script src='jarallax-element.js'></script>
+    <script>
+        jarallax(document.querySelectorAll('.jarallax'), {
+            speed: 0.5,
+        });
+    </script>
 </body>
+
 </html>
