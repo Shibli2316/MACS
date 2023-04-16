@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("location: \Project-SMART\genral\join.php");
+header("location: \MACS\guestView\join.php");
 exit;
 ?>
