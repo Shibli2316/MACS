@@ -7,7 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$idUser = $_SESSION['s_id'];
+// $idUser = $_SESSION['s_id'];
 
 $insert =false;
 $update=false;
@@ -17,42 +17,6 @@ include '../../partials/_dbconnect.php';
 
 // $user = $_SESSION['username'];
 // $idUser = $_GET['id'];
-
-if ($_SERVER['REQUEST_METHOD'] =='POST'){
-
-    // $filename = $_FILES["upload"]["name"];
-    // $tempname = $_FILES["upload"]["tmp_name"];
-
-    // $folder = "../../documents/marksheet/".$filename;
-    // move_uploaded_file($tempname, $folder);
-    // Should be student id
-    // $id=$_POST['id'];
-    $level=$_POST['level'];
-    $year_passing=$_POST['year_passing'];
-    $roll_no=$_POST['roll_no'];
-    $board=$_POST['board'];
-    $result=$_POST['result'];
-    $grade_type=$_POST['grade_type'];
-    $grade=$_POST['grade'];
-
-
-    // $certificate=$_POST['upload'];
-
-
-    $sql = "INSERT INTO `s_education` (`level`, `year_passing`, `roll_no`, `board`, `result`, `grade_type`, `grade`, `certificate`) VALUES ('$level', '$year_passing', '$roll_no', '$board', '$result', '$grade_type', '$grade', 'toDO');";
-    // var_dump($sql);
-    $result= mysqli_query($conn, $sql);
-    if (!$result) {
-        echo "Error while updating records";
-    } else {
-        echo "<script>alert('Your records has been updated successfully!!!')</script>";
-?>
-
-<!-- Redirecting to profile page -->
-        <!-- <meta http-equiv="refresh" content="0; url = uploadingAddress.php" /> -->
-<?php
-    }
-}
 ?>
     
 
@@ -94,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
 
 <div class="container border my-4">
 
-    <form action="addEdu.php" method="post">
+    <form action="addEdu.php" method="post" enctype="multipart/form-data">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Level of qualification</label>
             <input type="text" class="form-control" id="id" name="level" placeholder="SSC">
@@ -134,4 +98,44 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
     </form>
 
 </div>
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] =='POST'){
+
+$filename = $_FILES["upload"]["name"];
+$tempname = $_FILES["upload"]["tmp_name"];
+
+$folder = "../../documents/marksheet/".$filename;
+move_uploaded_file($tempname, $folder);
+// Should be student id
+// $id=$_POST['id'];
+$level=$_POST['level'];
+$year_passing=$_POST['year_passing'];
+$roll_no=$_POST['roll_no'];
+$board=$_POST['board'];
+$result=$_POST['result'];
+$grade_type=$_POST['grade_type'];
+$grade=$_POST['grade'];
+
+
+// $certificate=$_POST['upload'];
+
+
+$sql = "INSERT INTO `s_education` (`level`, `year_passing`, `roll_no`, `board`, `result`, `grade_type`, `grade`, `certificate`) VALUES ('$level', '$year_passing', '$roll_no', '$board', '$result', '$grade_type', '$grade', '$folder');";
+// var_dump($sql);
+$result= mysqli_query($conn, $sql);
+if (!$result) {
+    echo "Error while updating records";
+} else {
+    echo "<script>alert('Your records has been updated successfully!!!')</script>";
+?>
+
+<!-- Redirecting to profile page -->
+    <!-- <meta http-equiv="refresh" content="0; url = uploadingAddress.php" /> -->
+<?php
+}
+}
+?>
+
 <?php include '../../partials/_footer.php';?>

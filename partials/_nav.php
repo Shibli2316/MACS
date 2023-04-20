@@ -14,7 +14,7 @@ echo "
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='../afterAdmission/accept.php'>Admission</a>
+                        <a class='nav-link' href='../student/afterAdmission/accept.php'>Admission</a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='../../partials/logout.php'>logout</a>

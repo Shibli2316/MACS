@@ -5,7 +5,7 @@
             <li class='nav-item'><a href='../beforeAdmission/uploadingPersonalDetails.php' class='nav-link'>Profile</a></li>
             <li class='nav-item'><a href='../beforeAdmission/uploadingAddress.php' class='nav-link'>Address</a></li>
             <li class='nav-item'><a href='../beforeAdmission/education.php' class='nav-link'>Education</a></li>
-            <li class='nav-item'><a href='../beforeAdmission/category.php' class='nav-link'>Category</a></li>
+            <!-- <li class='nav-item'><a href='../beforeAdmission/category.php' class='nav-link'>Category</a></li> -->
             <li class='nav-item'><a href='../beforeAdmission/uploadingImages.php' class='nav-link'>Upload Documents</a></li>
             <li class='nav-item'><a href='../beforeAdmission/applyfor.php' class='nav-link'>Apply for</a></li>
         </ul>
