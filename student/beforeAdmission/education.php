@@ -63,11 +63,13 @@ include '../../partials/_dbconnect.php';
                     <th scope="col">Result</th>
                     <th scope="col">Grade type</th>
                     <th scope="col">Grade</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-$sql = "SELECT * FROM `s_education`";
+$sql = "SELECT * FROM `s_education` where username='$user';";
 $result = mysqli_query($conn, $sql);
 $sno=0;
 while($row = mysqli_fetch_assoc($result)){
@@ -81,6 +83,8 @@ while($row = mysqli_fetch_assoc($result)){
     <td>".$row['result']."</td>
     <td>".$row['grade_type']."</td>
     <td>".$row['grade']."</td>
+    <td><a href='".$row['certificate']."' download><button class='btn btn-warning'>Download</button></a></td>
+    <td><a href='editEdu.php?name=".$user."&roll=".$row['roll_no']."'><button class='btn btn-success'>Edit</button></a></td>
     
     </tr>";
 }
@@ -91,7 +95,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 </div>
 <div class="container my-2">
-    <a href="addEdu.php" class="btn btn-primary">ADD</a>
+    <a href="addEdu.php?name=<?=$user?>" class="btn btn-primary">ADD</a>
 </div>
         
 </div>

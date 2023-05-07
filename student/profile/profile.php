@@ -39,6 +39,12 @@ include "../../partials/_dbconnect.php"
 
     // Storing it into an associative array called details.
     $details = mysqli_fetch_assoc($result);
+    $sql1 = "SELECT * FROM `s_specifics` WHERE username = '$user'";
+    $result1 = mysqli_query($conn, $sql1);
+
+    // Storing it into an associative array called details.
+    $details1 = mysqli_fetch_assoc($result1);
+    // echo $details['mobile'];
     ?>
 <?php include '../../partials/_studNav.php';?>
 
@@ -53,21 +59,22 @@ include "../../partials/_dbconnect.php"
 <div class=" text-center card-header">
     <h3>Your Profile</h3>
 </div>
-        <form action="updatingImg.php<?php echo"?id={$details['s_id']}";?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
-            <div class="container text-cente">
+        <form action="updatingImg.php<?php echo"?name={$details['username']}";?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+            <div class="container text-center" >
 
                 <?php 
-        if($details['s_img'] == ""){
+        if($details1['s_img'] == ""){
             echo "<label for='name'>Upload profile image</label>";
         }
         else{
-            echo "<img src='".$details['s_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
+            echo "<img src='".$details1['s_img']."' height='100px' width='100px' style='border-radius:50%;' alt='profile image'><br>";
             echo "Profile Image";
+            echo "<br>";
         }
         ?>
 
 <?php
-        echo "<a href='updatingImg.php?id=".$details['s_id']."'><input type='button' value='Update' class='btn btn-primary'></a>"
+        echo "<a href='updatingImg.php?name=".$details['username']."'><input type='button' value='Update' class='btn btn-primary'></a>"
         ?>
         </div>
         </form>
@@ -98,15 +105,44 @@ include "../../partials/_dbconnect.php"
             <input class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
             
         </div>
-        <div class="mb-3 mx-5">
 
-            <label class="form-label" for="name">Exam</label>
-            <input class="form-control" type="text" name="exam" id="exam" placeholder="<?php if ($details['exam'] == "") {echo "Enter name";} else {echo $details['exam'];} ?>" readonly> <br>
-            
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="fname">Date of Birth</label>
+        <input class="form-control" type="text" name="dob" id="dob" placeholder="<?php if ($details['dob'] === "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" readonly> <br>
+
         </div>
 
         
+        <!-- GENDER -->
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="fname">Gender</label>
+            <input class="form-control" type="text" name="gender" id="gender" placeholder="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" readonly> <br>
+            
+        </div>
         
+        
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="fname">Mobile</label>
+            <input class="form-control" type="text" name="mobile" id="mobile" placeholder="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" readonly> <br>
+            
+        </div>
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="name">Aadhar Number</label>
+        <input class="form-control" type="text" name="aadhar" id="aadhar" placeholder="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" readonly> <br>
+
+        </div>
+
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="name">Nationality</label>
+        <input class="form-control" type="text" name="nationality" id="nationality" placeholder="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" readonly> <br>
+
+        </div>
+    
+    
+    </div>
+
+        
+        <br>
         <div class="container text-center">
 
             <!-- The update button directing the user to the update page from where he or she can update his/her profile -->

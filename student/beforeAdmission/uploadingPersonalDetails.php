@@ -84,7 +84,7 @@ include "../../partials/_dbconnect.php"
         <!-- NOT WORKING -->
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Date of Birth</label>
-        <input class="form-control" type="date" name="dob" id="dob" placeholder="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" readonly> <br>
+        <input class="form-control" type="text" name="dob" id="dob" placeholder="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" readonly> <br>
 
         </div>
 
@@ -137,11 +137,7 @@ include "../../partials/_dbconnect.php"
 
         </div>
         
-        <div class="mb-3 mx-5">
-        <label class="form-label" for="name">Domicile</label>
-        <input class="form-control" type="text" name="domicile" id="domicile" placeholder="<?php if ($details['domicile'] == "") {echo "Enter Domicile";} else {echo $details['domicile'];} ?>" readonly> <br>
-
-        </div>
+        
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Identity Mark</label>

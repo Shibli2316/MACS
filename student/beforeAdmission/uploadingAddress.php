@@ -33,7 +33,7 @@ include "../../partials/_dbconnect.php"
     
     // Fetching the data of the logged in user.
     // UPDATE THE QUERY WHERE CLAUSE
-    $sql = "SELECT * FROM `s_specifics` WHERE `id`=1";
+    $sql = "SELECT * FROM `s_specifics` WHERE username='$user'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
@@ -108,7 +108,7 @@ include "../../partials/_dbconnect.php"
         <div class="container text-center">
 
             <?php
-        echo "<a href='updatingAddress.php?id=".$details['id']."'><input type='button' value='Update' class='btn btn-primary'></a>"
+        echo "<a href='updatingAddress.php?name=".$details['username']."'><input type='button' value='Update' class='btn btn-primary'></a>"
         ?>
         </div>
 

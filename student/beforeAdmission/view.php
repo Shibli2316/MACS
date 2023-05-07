@@ -38,9 +38,9 @@ $sql = "SELECT
 *
 FROM students
 JOIN s_education
-ON students.s_id = s_education.s_id
+ON students.username = s_education.username
 JOIN s_specifics
-ON s_specifics.s_id = s_education.s_id WHERE students.username='$user';";
+ON s_specifics.username = s_education.username WHERE students.username='$user';";
 $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.

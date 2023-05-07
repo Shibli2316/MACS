@@ -7,7 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$idUser = $_SESSION['s_id'];
+
 // $user = 'shibli';
 // $idUser = 1;
 
@@ -37,7 +37,7 @@ include "../../partials/_dbconnect.php"
     require "../../partials/_nav.php";
     include "../../partials/_studNav.php";
     // Fetching the data of the logged in user.
-    $sql = "SELECT * FROM `s_specifics` WHERE s_id = '$idUser'";
+    $sql = "SELECT * FROM `s_specifics` WHERE username = '$user'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
@@ -64,7 +64,7 @@ include "../../partials/_dbconnect.php"
     ?>
     <br>
     <?php
-        echo "<a href='updateImage.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
+        echo "<a href='updateImage.php?name=".$user."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
 
@@ -85,7 +85,7 @@ include "../../partials/_dbconnect.php"
         ?>
     <br>
     <?php
-        echo "<a href='updateSign.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
+        echo "<a href='updateSign.php?name=".$user."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
 
@@ -109,7 +109,7 @@ include "../../partials/_dbconnect.php"
     
     <!-- The update button  class='btn btn-primary'directing the user to the update page from where he or she can update his/her profile -->
     <?php
-        echo "<a href='updateThumb.php?user=".$idUser."'><input type='button' class='btn btn-primary' value='Update'></a>"
+        echo "<a href='updateThumb.php?name=".$user."'><input type='button' class='btn btn-primary' value='Update'></a>"
         ?>
 
 

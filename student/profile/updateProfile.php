@@ -48,12 +48,19 @@ $details = mysqli_fetch_assoc($result);
         $f_name = $_POST['f_name'];
         $l_name = $_POST['l_name'];
         $email = $_POST['email'];
-        $exam = $_POST['exam'];
+        
+        $dob = $_POST['dob'];
+        $gender = $_POST['gender'];
+        $mobile = $_POST['mobile'];
+        // echo $mobile;
+        $aadhar = $_POST['aadhar'];
+        $nationality = $_POST['nationality'];
+
         // $form_no = $_POST['form_no'];
         // $rank = $_POST['rank'];
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `students` SET `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `exam` = '$exam' WHERE `students`.`username` = '$user';";
+        $updatingDetails = "UPDATE `students` SET `f_name` = '$f_name', `l_name` = '$l_name', `email` = '$email', `dob` = '$dob', `gender`='$gender', `mobile`='$mobile', `aadhar`='$aadhar', `nationality`='$nationality' WHERE `students`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -103,12 +110,40 @@ $details = mysqli_fetch_assoc($result);
             <input class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
         </div>
             
-        <div class="mb-3 mx-5">
-
-            <label class="form-label" for="name">Exam</label>
-            <input class="form-control" type="text" name="exam" id="exam" value="<?php if ($details['exam'] == "") {echo "Enter Exam";} else {echo $details['exam'];} ?>"> <br>
-        </div>
+        
             
+        
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="fname">Date of Birth</label>
+        <input class="form-control" type="date" name="dob" id="dob" value="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" > <br>
+
+        </div>
+
+        
+        <!-- GENDER -->
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="fname">Gender</label>
+            <input class="form-control" type="text" name="gender" id="gender" value="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" > <br>
+            
+        </div>
+        
+        
+        <div class="mb-3 mx-5">
+            <label class="form-label" for="fname">Mobile</label>
+            <input class="form-control" type="text" name="mobile" id="mobile" value="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" > <br>
+            
+        </div>
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="name">Aadhar Number</label>
+        <input class="form-control" type="text" name="aadhar" id="aadhar" value="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" > <br>
+
+        </div>
+
+        <div class="mb-3 mx-5">
+        <label class="form-label" for="name">Nationality</label>
+        <input class="form-control" type="text" name="nationality" id="nationality" value="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" > <br>
+
+        </div>
        
             
         

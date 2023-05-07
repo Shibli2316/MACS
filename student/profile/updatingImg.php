@@ -7,7 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$id = $_GET['id'];
+
 // echo $user;
 // echo $id;
 // Including the connection file of the database.
@@ -36,11 +36,13 @@ include "../../partials/_dbconnect.php"
     include "../../partials/_nav.php";
 
     // Fetching the data of the logged in user.
-    $sql = "SELECT * FROM `s_specifics` WHERE s_id = '$id'";
+    $sql = "SELECT * FROM `students` WHERE username = '$user'";
     $result = mysqli_query($conn, $sql);
 
     // Storing it into an associative array called details.
     $details = mysqli_fetch_assoc($result);
+    
+    $sid = $details['s_id'];
     // var_dump($details);
 
     // If the request method of the form is post the data to be entered into the database are stored in various variables.
@@ -52,7 +54,7 @@ include "../../partials/_dbconnect.php"
         $folder = "../../images/imagesS/profileImages/" . $filename;
         move_uploaded_file($tempname, $folder);
         // The updating query being executed.
-        $updatingDetails = "Insert into s_specifics (s_id, s_img) values ('$id', '$folder');";
+        $updatingDetails = "UPDATE s_specifics SET `s_id`='$sid', `s_img`='$folder' where username='$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -74,7 +76,7 @@ include "../../partials/_dbconnect.php"
     </div>
     <div class="container border">
         <div class="container text-conter">
-            <form action="updatingImg.php?id=<?php echo $id; ?>" class="mx-2 my-2" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+            <form action="updatingImg.php?name=<?php echo $user; ?>" class="mx-2 my-2" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
                 <?php
                 
@@ -86,7 +88,7 @@ include "../../partials/_dbconnect.php"
                 
                 ?>
                 <div class="container text-center">
-                    <button class="btn btn-primary my-2" id="save">Submit</button>
+                    <button class="btn btn-primary my-2">Submit</button>
                 </div>
 
             </form>

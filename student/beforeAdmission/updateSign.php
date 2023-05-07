@@ -7,7 +7,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$idUser = $_GET['user'];
+
 
 // Including the connection file of the database.
 include "../../partials/_dbconnect.php"
@@ -36,7 +36,7 @@ include "../../partials/_nav.php";
 include '../../partials/_studNav.php';
 
 // Fetching the data of the logged in user.
-$sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
+$sql = "SELECT * FROM `s_specifics` WHERE username = '$user'";
 $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.
@@ -52,7 +52,7 @@ $details = mysqli_fetch_assoc($result);
     move_uploaded_file($tempname, $folder);
 
 // The updating query being executed.
-        $updatingDetails = "UPDATE `s_specifics` SET `s_sign`='$folder' WHERE `s_specifics`.`id` = '$idUser';";
+        $updatingDetails = "UPDATE `s_specifics` SET `s_sign`='$folder' WHERE `s_specifics`.`username` = '$user';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -74,7 +74,7 @@ $details = mysqli_fetch_assoc($result);
 <div class="container border">
 
     <!-- If the data of the user is present it is being fetched and dispplayed into the respected fields from where the user can update it if needed. The username cannot be updated -->
-    <form action="updateSign.php?user=<?php echo $idUser;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
+    <form action="updateSign.php?name=<?php echo $user;?>" class="mx-2 my-2" method="post" enctype="multipart/form-data">
 
     <?php 
         if($details['s_sign'] == ""){

@@ -23,10 +23,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     }
     else{
     if(($password==$cpassword)){
-        $hash=password_hash($password, PASSWORD_DEFAULT);
-        $sql="INSERT INTO students (username, pass, email) VALUES ('$username', '$hash', '$email')";
+        // $hash=password_hash($password, PASSWORD_DEFAULT);
+        $sql="INSERT INTO students (username, pass, email) VALUES ('$username', '$cpassword', '$email');";
         
         $result=mysqli_query($conn, $sql);
+
+        $sql1 = "INSERT INTO s_specifics (username) VALUES ('$username');";
+        $run = mysqli_query($conn, $sql1);
+
         if ($result){
             $_SESSION['username'] = $username;
             header('location: index.php');

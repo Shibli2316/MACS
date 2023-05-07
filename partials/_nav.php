@@ -1,4 +1,9 @@
 <?php
+include '_dbconnect.php';
+$sql = "SELECT * FROM verify where username='shibli'";
+$run = mysqli_query($conn, $sql);
+$fetch = mysqli_fetch_assoc($run);
+$check = $fetch['verified'];
 echo "
     <nav class='navbar navbar-expand-lg bg-dark navbar-dark'>
         <div class='container-fluid'>
@@ -12,10 +17,20 @@ echo "
                     
                     <li class='nav-item'>
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
-                    </li>
+                    </li>";
+
+                    if($check==1){
+                        echo "
                     <li class='nav-item'>
-                        <a class='nav-link' href='../student/afterAdmission/accept.php'>Admission</a>
-                    </li>
+                        <a class='nav-link' href='../afterAdmission/accept.php'>Admission</a>
+                    </li>";
+                    }
+                    else{
+                        echo"<li class='nav-item'>
+                        <a class='nav-link' href='#'>Verification pending</a>
+                    </li>";
+                    }
+                    echo "
                     <li class='nav-item'>
                         <a class='nav-link' href='../../partials/logout.php'>logout</a>
                     </li>

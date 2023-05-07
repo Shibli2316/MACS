@@ -4,7 +4,7 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$idUser = $_GET['id'];
+
 
 // Including the connection file of the database.
 include "../../partials/_dbconnect.php"
@@ -35,7 +35,7 @@ include '../../partials/_studNav.php';
 
 
 // Fetching the data of the logged in user.
-$sql = "SELECT * FROM `s_specifics` WHERE id = '$idUser'";
+$sql = "SELECT * FROM `s_specifics` WHERE username = '$user'";
 $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.
@@ -55,7 +55,7 @@ $details = mysqli_fetch_assoc($result);
         
 // The updating query being executed.
 
-        $updatingDetails = "UPDATE `s_specifics` SET `p_add_hno`= '$p_add_hno' , `p_add_locality` = '$p_add_locality' , `p_add_city` = '$p_add_city' , `p_add_state` = '$p_add_state' ,`c_add_hno`='$c_add_hno' , `c_add_locality` = '$c_add_locality' , `c_add_city` = '$c_add_city' , `c_add_state` = '$c_add_state' WHERE `s_specifics`.`id` = '$idUser';";
+        $updatingDetails = "UPDATE `s_specifics` SET `p_add_hno`= '$p_add_hno' , `p_add_locality` = '$p_add_locality' , `p_add_city` = '$p_add_city' , `p_add_state` = '$p_add_state' ,`c_add_hno`='$c_add_hno' , `c_add_locality` = '$c_add_locality' , `c_add_city` = '$c_add_city' , `c_add_state` = '$c_add_state' WHERE `s_specifics`.`username` = '$user';";
         
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
@@ -77,7 +77,7 @@ $details = mysqli_fetch_assoc($result);
 </div>
     <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
     <div class="container border">
-    <form action="<?php echo $_SERVER['PHP_SELF']."?id=".$idUser; ?>" class="mx-2 my-2" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']."?name=".$user; ?>" class="mx-2 my-2" method="post">
     <div class="container text-center">
 
         <h3>Permanent Address</h3>

@@ -45,10 +45,11 @@ $details = mysqli_fetch_assoc($result);
 
 // If the request method of the form is post the data to be entered into the database are stored in various variables.
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        
+        $fname=$_POST['f_name'];
+        $lname=$_POST['l_name'];
         $father_name = $_POST['father_name'];
         $mother_name = $_POST['mother_name'];
-        // $dob = $_POST['dob'];
+        $dob = $_POST['dob'];
         $gender = $_POST['gender'];
         $blood_group = $_POST['blood_group'];
         $mobile = $_POST['mobile'];
@@ -57,11 +58,11 @@ $details = mysqli_fetch_assoc($result);
         $disability = $_POST['disability'];
         $aadhar = $_POST['aadhar'];
         $nationality = $_POST['nationality'];
-        $domicile = $_POST['domicile'];
+        // $domicile = $_POST['domicile'];
         $identity_mark = $_POST['identity_mark'];
 
 // The updating query being executed.
-        $updatingDetail = "UPDATE `students` SET `father_name`='$father_name',`mother_name` = '$mother_name', `blood_group` = '$blood_group', `mobile` = '$mobile', `guardian_name` = '$guardian_name', `guardian_number` = '$guardian_number', `disability` = '$disability', `aadhar` = '$aadhar', `nationality` = '$nationality', `domicile` = '$domicile', `identity_mark` = '$identity_mark', `gender` = '$gender' WHERE `students`.`username` = '$user';";
+        $updatingDetail = "UPDATE `students` SET `f_name`='$fname', `l_name`='$lname', `father_name`='$father_name',`mother_name` = '$mother_name', `blood_group` = '$blood_group', `mobile` = '$mobile', `guardian_name` = '$guardian_name', `guardian_number` = '$guardian_number', `disability` = '$disability', `aadhar` = '$aadhar', `nationality` = '$nationality', `dob` = '$dob', `identity_mark` = '$identity_mark', `gender` = '$gender' WHERE `students`.`username` = '$user';";
         // echo $updatingDetails;
         $run = mysqli_query($conn, $updatingDetail);
         // var_dump($run);
@@ -92,13 +93,13 @@ $details = mysqli_fetch_assoc($result);
 
     <div class="mb-3 mx-5">
         <label class="form-label" for="name">First Name</label>
-        <input class="form-control" type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
+        <input class="form-control" type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" > <br>
 
         </div>
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Last Name</label>
-        <input class="form-control" type="text" name="l_name" id="l_name" placeholder="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" readonly> <br>
+        <input class="form-control" type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" > <br>
 
         </div>
         
@@ -183,11 +184,7 @@ $details = mysqli_fetch_assoc($result);
 
         </div>
         
-        <div class="mb-3 mx-5">
-        <label class="form-label" for="name">Domicile</label>
-        <input class="form-control" type="text" name="domicile" id="domicile" value="<?php if ($details['domicile'] == "") {echo "Enter Domicile";} else {echo $details['domicile'];} ?>" > <br>
-
-        </div>
+        
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Identity Mark</label>

@@ -8,7 +8,7 @@ session_start();
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
 // $idUser = $_SESSION['s_id'];
-
+$no = $_GET['roll'];
 $insert =false;
 $update=false;
 $delete=false;
@@ -37,17 +37,55 @@ include '../../partials/_dbconnect.php';
         crossorigin="anonymous"></script>
 </head>
 
-<body>
-<?php include '../../partials/_nav.php';?>
-<?php include '../../partials/_studNav.php';?>
 <?php
 $sql = "SELECT s_id from students where username = '$user';";
 $run = mysqli_query($conn, $sql);
 $fetch = mysqli_fetch_assoc($run);
 $sid = $fetch['s_id'];
+?>
+<?php
+$sql = "SELECT * FROM `s_education` WHERE username = '$user' and roll_no = $no";
+$result = mysqli_query($conn, $sql);
+
+// Storing it into an associative array called details.
+$details = mysqli_fetch_assoc($result);
+
+
+if ($_SERVER['REQUEST_METHOD'] =='POST'){
+
+
+    $level=$_POST['level'];
+    $year_passing=$_POST['year_passing'];
+    $roll_no=$_POST['roll_no'];
+    $board=$_POST['board'];
+    $result=$_POST['result'];
+    $grade_type=$_POST['grade_type'];
+    $grade=$_POST['grade'];
+    
+    
+    // $certificate=$_POST['upload'];
+    
+    
+    $sql = "UPDATE `s_education` SET `s_id`='$sid', `level`='$level', `year_passing`='$year_passing', `roll_no`='$roll_no', `board`='$board', `result`='$result', `grade_type`='$grade_type', `grade`='$grade' where username='$user' and roll_no=$no;";
+    // var_dump($sql);
+    $result= mysqli_query($conn, $sql);
+    if (!$result) {
+        echo "Error while updating records";
+    } else {
+        echo "<script>alert('Your records has been updated successfully!!!')</script>";
+    ?>
+    
+    <!-- Redirecting to profile page -->
+        <meta http-equiv="refresh" content="0; url = education.php" />
+    <?php
+    }
+    }
 
 
 ?>
+<body>
+<?php include '../../partials/_nav.php';?>
+<?php include '../../partials/_studNav.php';?>
 <div class="container card text-center my-4 border">
     <div class="card-header">
 
@@ -66,40 +104,36 @@ $sid = $fetch['s_id'];
 
 <div class="container border my-4">
 
-    <form action="addEdu.php?name=<?=$user?>" method="post" enctype="multipart/form-data">
+    <form action="editEdu.php?name=<?=$user?>&roll=<?=$no?>" method="post" enctype="multipart/form-data">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Level of qualification</label>
-            <input type="text" class="form-control" id="id" name="level" placeholder="SSC">
+            <input type="text" class="form-control" id="id" name="level" value="<?php if ($details['level'] == "") {echo "Enter Level of qualification";} else {echo $details['level'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="empName" class="form-label">Year of passing</label>
-            <input type="text" class="form-control" id="name" name="year_passing" placeholder="2020">
+            <input type="text" class="form-control" id="name" name="year_passing" value="<?php if ($details['year_passing'] == "") {echo "Enter year of passing";} else {echo $details['year_passing'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="designation" class="form-label">Enter Roll Number</label>
-            <input type="text" class="form-control" id="designation" name="roll_no" placeholder="123E">
+            <input type="text" class="form-control" id="designation" name="roll_no" value="<?php if ($details['roll_no'] == "") {echo "Enter Roll no";} else {echo $details['roll_no'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Board of Studies</label>
-            <input type="text" class="form-control" id="address" name="board" placeholder="CBSC">
+            <input type="text" class="form-control" id="address" name="board" value="<?php if ($details['board'] == "") {echo "Enter board of studies";} else {echo $details['board'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Result Status</label>
-            <input type="text" class="form-control" id="address" name="result" placeholder="Passed">
+            <input type="text" class="form-control" id="address" name="result" value="<?php if ($details['result'] == "") {echo "Passed/Awaited/Appearing";} else {echo $details['result'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade Type</label>
-            <input type="text" class="form-control" id="address" name="grade_type" placeholder="Percentage">
+            <input type="text" class="form-control" id="address" name="grade_type" value="<?php if ($details['grade_type'] == "") {echo "Enter type of grade";} else {echo $details['grade_type'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade</label>
-            <input type="text" class="form-control" id="address" name="grade" placeholder="22%">
+            <input type="text" class="form-control" id="address" name="grade" value="<?php if ($details['grade'] == "") {echo "Enter your grades";} else {echo $details['grade'];} ?>">
         </div>
-        <div class="mb-3 mx-5">
-            <label for="address" class="form-label">Upload Certificate</label>
-            <p>Once ypu have uploaded the certificate you cannot change it</p>
-            <input type="file" class="form-control" id="address" name="upload">
-        </div>
+        
         <div class="container text-center">
             <button class="btn btn-primary my-2" id="save">Submit</button>
         </div>
@@ -109,41 +143,6 @@ $sid = $fetch['s_id'];
 </div>
 
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] =='POST'){
 
-$filename = $_FILES["upload"]["name"];
-$tempname = $_FILES["upload"]["tmp_name"];
-
-$folder = "../../documents/marksheet/".$filename;
-move_uploaded_file($tempname, $folder);
-// Should be student id
-// $id=$_POST['id'];
-$level=$_POST['level'];
-$year_passing=$_POST['year_passing'];
-$roll_no=$_POST['roll_no'];
-$board=$_POST['board'];
-$result=$_POST['result'];
-$grade_type=$_POST['grade_type'];
-$grade=$_POST['grade'];
-
-
-// $certificate=$_POST['upload'];
-
-$sql = "INSERT INTO `s_education` (`s_id`, `level`, `year_passing`, `roll_no`, `board`, `result`, `grade_type`, `grade`, `certificate`, `username`) VALUES ('$sid', '$level', '$year_passing', '$roll_no', '$board', '$result', '$grade_type', '$grade', '$folder', '$user');";
-// var_dump($sql);
-$result= mysqli_query($conn, $sql);
-if (!$result) {
-    echo "Error while updating records";
-} else {
-    echo "<script>alert('Your records has been updated successfully!!!')</script>";
-?>
-
-<!-- Redirecting to profile page -->
-    <meta http-equiv="refresh" content="0; url = education.php" />
-<?php
-}
-}
-?>
 
 <?php include '../../partials/_footer.php';?>
