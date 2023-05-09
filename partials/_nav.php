@@ -19,7 +19,7 @@ echo "
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
                     </li>";
 
-                    if($check==1){
+                    if($check=='yes'){
                         echo "
                     <li class='nav-item'>
                         <a class='nav-link' href='../afterAdmission/accept.php'>Admission</a>

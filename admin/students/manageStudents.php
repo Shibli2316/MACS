@@ -39,7 +39,12 @@ include "../../partials/_dbconnect.php"
       $sno = 1;
 
       // Fetching students records
-      $fetching = "SELECT * FROM students;";
+      
+      $fetching = "SELECT
+*
+FROM students
+JOIN s_specifics
+ON s_specifics.s_id = students.s_id;";
       $run = mysqli_query($conn, $fetching);
       if (!$run) {
         echo "error";
@@ -49,7 +54,7 @@ include "../../partials/_dbconnect.php"
       $howManyRows = mysqli_num_rows($run);
       if ($howManyRows > 0) {
         while ($row = mysqli_fetch_assoc($run)) {
-          $sID= $row['s_id'];
+          $sID = $row['s_id'];
           echo "
         <tbody>
         <tr>
@@ -60,8 +65,8 @@ include "../../partials/_dbconnect.php"
           <td>" . $row['email'] . "</td>
           <td>" . $row['exam'] . "</td>
           <td>" . $row['rank'] . "</td>
-          <td><a href='studDoc.php?id=".$sID."'><button class='btn btn-primary btn-primary'>View</button></a></td>
-          <td><a href='view.php?id=".$sID."'><button class='btn btn-primary btn-success'>View</button></a></td>
+          <td><a href='studDoc.php?id=" . $sID . "'><button class='btn btn-primary btn-primary'>View</button></a></td>
+          <td><a href='view.php?id=" . $sID . "'><button class='btn btn-primary btn-success'>View</button></a></td>
         </tr>
       </tbody>";
           $sno = $sno + 1;

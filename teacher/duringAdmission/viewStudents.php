@@ -43,7 +43,12 @@ include '../includes/header.php';
 $sno = 1;
 
 // Fetching students records
-$fetching = "SELECT * FROM students;";
+// $fetching = "SELECT * FROM students;";
+$fetching = "SELECT
+*
+FROM students
+JOIN s_specifics
+ON students.s_id = s_specifics.s_id;";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";

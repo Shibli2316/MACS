@@ -145,6 +145,11 @@ $result = mysqli_query($conn, $sql);
 
 // Storing it into an associative array called details.
 $details = mysqli_fetch_assoc($result);
+if($details['verified']==1){
+    $v = "Verified";
+}else{
+    $v="Update needed";
+}
 
 ?>
 
@@ -164,7 +169,7 @@ $details = mysqli_fetch_assoc($result);
                             <label class="form-label" for="sub">Document verified</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" readonly value="<?=$details['verified']?>">
+                            <input type="text" class="form-control" readonly value="<?=$v?>">
                             
                         </div>
                     </div>
@@ -178,6 +183,16 @@ $details = mysqli_fetch_assoc($result);
                             
                         </div>
                     </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="sub">Remark frim teacher</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" readonly value="<?=$details['remark']?>">
+                            
+                        </div>
+                    </div>
                 </div>
                 <form action="accept.php" method="post">
                 <div class="container my-2">
@@ -188,8 +203,8 @@ $details = mysqli_fetch_assoc($result);
                         <div class="col-md-6">
                             <select class="form-control" name="accept" id="">
                                 <option value="0">--SELECT--</option>
-                                <option value="7">Yes</option>
-                                <option value="4">No</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
                                 
                             </select>
                         </div>
@@ -214,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 $accept=$_POST['accept'];
 // The updating query being executed.
-        $updatingDetails = "UPDATE `verify` SET `accept`='$accept' WHERE `verify`.`id` = '$id';";
+        $updatingDetails = "UPDATE `verify` SET `accept`='$accept' WHERE `verify`.`sid` = '$id';";
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";

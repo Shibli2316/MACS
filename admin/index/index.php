@@ -32,7 +32,7 @@ if($howManyRows>0){
 $count = 0;
 
 // Fetching students records
-$fetching = "SELECT * FROM verify;";
+$fetching = "SELECT * FROM verify where accept = 'yes';";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";

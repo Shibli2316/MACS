@@ -36,7 +36,8 @@ include "../../partials/_dbconnect.php";
 $sno = 1;
 
 // Fetching students records
-$fetching = "SELECT * from verify join students on verify.sid=students.s_id WHERE verified=0";
+$fetching = "SELECT * from verify join students on verify.sid=students.s_id JOIN s_specifics
+ON s_specifics.s_id = students.s_id WHERE verified='yes' AND accept='no';";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";

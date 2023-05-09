@@ -37,6 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
     // echo $appNum;
     // var_dump($sql);
     $result= mysqli_query($conn, $sql);
+    $sql1 = "SELECT * FROM students where `username`= '$user';";
+    $result1= mysqli_query($conn, $sql1);
+    $detail = mysqli_fetch_assoc($result1);
+    $sid = $detail['s_id'];
+    
+    $sql2 = "INSERT into `verify` (`username`, `sid`) values ('$user', '$sid');";
+    $result3 = mysqli_query($conn, $sql2);
     if (!$result) {
         echo "Error while updating records";
     } else {
@@ -44,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
 ?>
 
 <!-- Redirecting to profile page -->
-        <meta http-equiv="refresh" content="0; url = dashboard.php" />
+        <!-- <meta http-equiv="refresh" content="0; url = dashboard.php" /> -->
 <?php
     }
 }

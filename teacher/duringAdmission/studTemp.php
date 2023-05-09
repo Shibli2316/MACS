@@ -126,8 +126,8 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
       <label class="form-label" for="admit">Admit Student</label>
       <select class="form-control" name="verified" id="">
         <option value="NULL">--SELECT--</option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
       </select>
       <br>
       <div class="container text-center">

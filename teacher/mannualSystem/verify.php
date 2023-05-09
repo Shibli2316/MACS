@@ -12,7 +12,10 @@ include "../../partials/_dbconnect.php";
 $id=$_GET['id'];
 // echo $id;
 
-
+$sql = "SELECT * FROM teachers where username = '$user'";
+$res = mysqli_query($conn, $sql);
+$det = mysqli_fetch_assoc($res);
+$tid = $det['t_id'];
 
 
 if ($_SERVER['REQUEST_METHOD']=='POST') {
@@ -27,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 
-    $sql = "INSERT INTO `verify` (`sid`, `tid`, `remark`, `verified`, `sub`) 
-    VALUES ('$id', '$user', '$remark', '$verified', '$sub');";
+    $sql = "UPDATE `verify` SET `tid` = '$tid', `remark`='$remark', `verified`='$verified', `sub`='$sub';";
 // var_dump($sql);
 
     $result = mysqli_query($conn, $sql);
