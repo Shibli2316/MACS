@@ -17,7 +17,11 @@ echo "
                     
                     <li class='nav-item'>
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
-                    </li>";
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='../live.php'>Seat Update</a>
+                    </li>
+                    ";
 
                     if($check=='yes'){
                         echo "

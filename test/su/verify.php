@@ -4,8 +4,6 @@ session_start();
 
 // Assigning usernme of the logged in user into a variable for easy access.
 $user = $_SESSION['username'];
-$sid = $_GET['id'];
-
 
 // Including the connection file of the database.
 include "../../partials/_dbconnect.php";
@@ -32,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 
-    $sql = "UPDATE `verify` SET `tid` = '$tid', `remark`='$remark', `verified`='$verified', `sub`='$sub' where sid = $sid;";
+    $sql = "UPDATE `verify` SET `tid` = '$tid', `remark`='$remark', `verified`='$verified', `sub`='$sub';";
 // var_dump($sql);
 
     $result = mysqli_query($conn, $sql);

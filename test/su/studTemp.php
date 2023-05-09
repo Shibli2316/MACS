@@ -12,7 +12,6 @@ include "../../partials/_dbconnect.php";
 $id = $_GET['id'];
 // echo $id;
 
-include '../includes/header.php';
 
 
 // Fetching the data of the logged in user.
@@ -123,9 +122,6 @@ echo "<img src='".$details['s_img']."' height='100px' width='100px' style='borde
       <input class="form-control" type="text" name="sub" placeholder="Enter Subject">
       <br>
       
-      <label class="form-label" for="remark">Subjects Available are:</label>
-      <input class="form-control" type="text" readonly placeholder="Computer Applications, Maths, Bio Chemestry, Chemestry, Stats and Physics">
-      <br>
       <label class="form-label" for="admit">Admit Student</label>
       <select class="form-control" name="verified" id="">
         <option value="NULL">--SELECT--</option>

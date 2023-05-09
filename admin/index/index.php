@@ -85,6 +85,138 @@ if($howManyRows>0){
         </div>
 
     </div>
+&nbsp;
+
+<?php
+
+$sqlCS = "SELECT count(*) as total FROM verify where sub = 'Computer Applications'";
+$tSeatCS = 10;
+$resCS = mysqli_query($conn, $sqlCS);
+$detCS = mysqli_fetch_assoc($resCS);
+$nowCS = $detCS['total'];
+$scCS = $tSeatCS - $nowCS;
+// echo $scCS;
+$sqlM = "SELECT count(*) as total FROM verify where sub = 'Maths'";
+$tSeatM = 10;
+$resM = mysqli_query($conn, $sqlM);
+$detM = mysqli_fetch_assoc($resM);
+$nowM = $detM['total'];
+$scM = $tSeatM - $nowM;
+
+$sqlStat = "SELECT count(*) as total FROM verify where sub = 'Stats'";
+$tSeatStat = 10;
+$resStat = mysqli_query($conn, $sqlStat);
+$detStat = mysqli_fetch_assoc($resStat);
+$nowStat = $detStat['total'];
+$scStat = $tSeatStat - $nowStat;
+
+$sqlChem = "SELECT count(*) as total FROM verify where sub = 'Chemestry'";
+$tSeatChem = 10;
+$resChem = mysqli_query($conn, $sqlChem);
+$detChem = mysqli_fetch_assoc($resChem);
+$nowChem = $detChem['total'];
+$scChem = $tSeatChem - $nowChem;
+
+$sqlBio = "SELECT count(*) as total FROM verify where sub = 'Bio Chemestry'";
+$tSeatBio = 10;
+$resBio = mysqli_query($conn, $sqlBio);
+$detBio = mysqli_fetch_assoc($resBio);
+$nowBio = $detBio['total'];
+$scBio = $tSeatBio - $nowBio;
+
+$sqlPhy = "SELECT count(*) as total FROM verify where sub = 'Physics'";
+$tSeatPhy = 10;
+$resPhy = mysqli_query($conn, $sqlPhy);
+$detPhy = mysqli_fetch_assoc($resPhy);
+$nowPhy = $detPhy['total'];
+$scPhy = $tSeatPhy - $nowPhy;
+
+?>
+
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header text-center">LIVE SEAT UPDATE</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Computer Science</h5>
+                                <p class="card-text">Total seats - <?=$tSeatCS?></p>
+                                <p class="card-text">Alloted - <?=$detCS['total']?></p>
+                                <p class="card-text">Remaining - <?=$scCS?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Maths</h5>
+                                <p class="card-text">Total seats - <?=$tSeatM?></p>
+                                <p class="card-text">Alloted - <?=$detM['total']?></p>
+                                <p class="card-text">Remaining - <?=$scM?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                &nbsp;
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Stats</h5>
+                                <p class="card-text">Total seats - <?=$tSeatStat?></p>
+                                <p class="card-text">Alloted - <?=$detStat['total']?></p>
+                                <p class="card-text">Remaining - <?=$scStat?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Chemestry</h5>
+                                <p class="card-text">Total seats - <?=$tSeatChem?></p>
+                                <p class="card-text">Alloted - <?=$detChem['total']?></p>
+                                <p class="card-text">Remaining - <?=$scChem?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">BioChemestry</h5>
+                                <p class="card-text">Total seats - <?=$tSeatBio?></p>
+                                <p class="card-text">Alloted - <?=$detBio['total']?></p>
+                                <p class="card-text">Remaining - <?=$scBio?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Physics</h5>
+                                <p class="card-text">Total seats - <?=$tSeatPhy?></p>
+                                <p class="card-text">Alloted - <?=$detPhy['total']?></p>
+                                <p class="card-text">Remaining - <?=$scPhy?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 <?php
 include '../includes/footer.php';
