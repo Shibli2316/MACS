@@ -49,7 +49,7 @@
                     <img src='../images/Snapchat-422098502.jpg' alt='myphoto' class='jarallax-img'>
                 </div>
                 <div class='content' data-jarallax-element='-200 0'>
-                    <p class='aboutme'>We have developed various modules like admin, teacher, student. They all have their own functionality. In addition to it we have a <a href="noticegenral.php" style="color: blanchedalmond;"><strong><i>Notice</i></strong></a> module that is open to all. As we belive that information should be free and fast moving. We have kept the design minimal to avoid complexity in navigation too.</p>
+                    <p class='aboutme'>We have developed various modules like admin, teacher, student. They all have their own functionality. In addition to it we have a <a href="noticegenral.php" style="color: blanchedalmond;"><strong><i>Notice</i></strong></a> module that is open to all. As we belive that information should be free and fast moving. in addition to it to know about our departments you can click <a href="dep.php" style="color: blanchedalmond;"><strong><i>here</i></strong></a> We have kept the design minimal to avoid complexity in navigation too.</p>
                 </div>
             </div>
         </div>

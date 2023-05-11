@@ -36,6 +36,9 @@ echo "<!DOCTYPE html>
                         <a class='nav-link' href='noticegenral.php'>Notice</a>
                     </li>    
                 <li class='nav-item'>
+                        <a class='nav-link' href='dep.php'>Departments</a>
+                    </li>
+                <li class='nav-item'>
                         <a class='nav-link' href='about.php'>About</a>
                     </li>";
                     

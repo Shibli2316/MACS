@@ -19,6 +19,9 @@ echo "
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
                     </li>
                     <li class='nav-item'>
+                        <a class='nav-link' href='../ques.php'>Satisfaction level</a>
+                    </li>
+                    <li class='nav-item'>
                         <a class='nav-link' href='../live.php'>Seat Update</a>
                     </li>
                     ";

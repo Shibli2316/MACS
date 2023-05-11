@@ -63,6 +63,8 @@
   }
   ?>
   </div>
+  <?php include '../partials/_footer.php';
+    ?>
 </body>
 
 </html>
