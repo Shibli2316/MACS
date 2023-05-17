@@ -69,36 +69,36 @@ $sid = $fetch['s_id'];
     <form action="addEdu.php?name=<?=$user?>" method="post" enctype="multipart/form-data">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Level of qualification</label>
-            <input type="text" class="form-control" id="id" name="level" placeholder="SSC">
+            <input required type="text" class="form-control" id="id" name="level" placeholder="SSC">
         </div>
         <div class="mb-3 mx-5">
             <label for="empName" class="form-label">Year of passing</label>
-            <input type="text" class="form-control" id="name" name="year_passing" placeholder="2020">
+            <input required type="text" class="form-control" id="name" name="year_passing" placeholder="2020">
         </div>
         <div class="mb-3 mx-5">
             <label for="designation" class="form-label">Enter Roll Number</label>
-            <input type="text" class="form-control" id="designation" name="roll_no" placeholder="123E">
+            <input required type="text" class="form-control" id="designation" name="roll_no" placeholder="123E">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Board of Studies</label>
-            <input type="text" class="form-control" id="address" name="board" placeholder="CBSC">
+            <input required type="text" class="form-control" id="address" name="board" placeholder="CBSC">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Result Status</label>
-            <input type="text" class="form-control" id="address" name="result" placeholder="Passed">
+            <input required type="text" class="form-control" id="address" name="result" placeholder="Passed">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade Type</label>
-            <input type="text" class="form-control" id="address" name="grade_type" placeholder="Percentage">
+            <input required type="text" class="form-control" id="address" name="grade_type" placeholder="Percentage">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade</label>
-            <input type="text" class="form-control" id="address" name="grade" placeholder="22%">
+            <input required type="text" class="form-control" id="address" name="grade" placeholder="22%">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Upload Certificate</label>
             <p>Once ypu have uploaded the certificate you cannot change it</p>
-            <input type="file" class="form-control" id="address" name="upload">
+            <input required type="file" class="form-control" id="address" name="upload">
         </div>
         <div class="container text-center">
             <button class="btn btn-primary my-2" id="save">Submit</button>

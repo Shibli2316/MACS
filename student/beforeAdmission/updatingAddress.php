@@ -41,6 +41,16 @@ $result = mysqli_query($conn, $sql);
 // Storing it into an associative array called details.
 $details = mysqli_fetch_assoc($result);
 
+
+
+
+$sql1 = "SELECT * FROM `students` WHERE username = '$user'";
+$result1 = mysqli_query($conn, $sql1);
+
+// Storing it into an associative array called details.
+$details1 = mysqli_fetch_assoc($result1);
+$id=$details1['s_id'];
+// echo $id;
 // If the request method of the form is post the data to be entered into the database are stored in various variables.
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         
@@ -55,8 +65,8 @@ $details = mysqli_fetch_assoc($result);
         
 // The updating query being executed.
 
-        $updatingDetails = "UPDATE `s_specifics` SET `p_add_hno`= '$p_add_hno' , `p_add_locality` = '$p_add_locality' , `p_add_city` = '$p_add_city' , `p_add_state` = '$p_add_state' ,`c_add_hno`='$c_add_hno' , `c_add_locality` = '$c_add_locality' , `c_add_city` = '$c_add_city' , `c_add_state` = '$c_add_state' WHERE `s_specifics`.`username` = '$user';";
-        
+        $updatingDetails = "UPDATE `s_specifics` SET `s_id`=$id, `p_add_hno`= '$p_add_hno' , `p_add_locality` = '$p_add_locality' , `p_add_city` = '$p_add_city' , `p_add_state` = '$p_add_state' ,`c_add_hno`='$c_add_hno' , `c_add_locality` = '$c_add_locality' , `c_add_city` = '$c_add_city' , `c_add_state` = '$c_add_state' WHERE `s_specifics`.`username` = '$user';";
+        // echo $updatingDetails;
         $run = mysqli_query($conn, $updatingDetails);
         if (!$run) {
             echo "Error while updating records";
@@ -75,7 +85,7 @@ $details = mysqli_fetch_assoc($result);
 <div class="container text-center card-header my-4">
     <h3>Update address</h3>
 </div>
-    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
+    <!-- In this fprm the input required fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
     <div class="container border">
     <form action="<?php echo $_SERVER['PHP_SELF']."?name=".$user; ?>" class="mx-2 my-2" method="post">
     <div class="container text-center">
@@ -85,25 +95,25 @@ $details = mysqli_fetch_assoc($result);
     <div class="mb-3 mx-5">
 
         <label class="form-label" for="name">House No</label>
-        <input class="form-control" type="text" name="p_add_hno" id="p_add_hno" value="<?php if ($details['p_add_hno'] == "") {echo "Enter House Number";} else {echo $details['p_add_hno'];} ?>" > <br>
+        <input required class="form-control" type="text" name="p_add_hno" id="p_add_hno" value="<?php if ($details['p_add_hno'] == "") {echo "Enter House Number";} else {echo $details['p_add_hno'];} ?>" > <br>
     </div>
     
         <div class="mb-3 mx-5">
 
             <label class="form-label" for="name">Locality</label>
-            <input class="form-control" type="text" name="p_add_locality" id="p_add_locality" value="<?php if ($details['p_add_locality'] == "") {echo "Enter Locality";} else {echo $details['p_add_locality'];} ?>" > <br>
+            <input required class="form-control" type="text" name="p_add_locality" id="p_add_locality" value="<?php if ($details['p_add_locality'] == "") {echo "Enter Locality";} else {echo $details['p_add_locality'];} ?>" > <br>
         </div>
         
 <div class="mb-3 mx-5">
 
     <label class="form-label" for="name">City</label>
-    <input class="form-control" type="text" name="p_add_city" id="p_add_city" value="<?php if ($details['p_add_city'] == "") {echo "Enter City/District";} else {echo $details['p_add_city'];} ?>" > <br>
+    <input required class="form-control" type="text" name="p_add_city" id="p_add_city" value="<?php if ($details['p_add_city'] == "") {echo "Enter City/District";} else {echo $details['p_add_city'];} ?>" > <br>
 </div>
 
         <div class="mb-3 mx-5">
 
             <label class="form-label" for="state">State</label>
-            <input class="form-control" type="text" name="p_add_state" id="p_add_state" value="<?php if ($details['p_add_state'] == "") {echo "Enter State";} else {echo $details['p_add_state'];} ?>" > <br>
+            <input required class="form-control" type="text" name="p_add_state" id="p_add_state" value="<?php if ($details['p_add_state'] == "") {echo "Enter State";} else {echo $details['p_add_state'];} ?>" > <br>
         </div>
         
         
@@ -114,25 +124,25 @@ $details = mysqli_fetch_assoc($result);
     <div class="mb-3 mx-5">
 
         <label class="form-label" for="name">House No</label>
-        <input class="form-control" type="text" name="c_add_hno" id="c_add_hno" value="<?php if ($details['c_add_hno'] == "") {echo "Enter House Number";} else {echo $details['c_add_hno'];} ?>" > <br>
+        <input required class="form-control" type="text" name="c_add_hno" id="c_add_hno" value="<?php if ($details['c_add_hno'] == "") {echo "Enter House Number";} else {echo $details['c_add_hno'];} ?>" > <br>
     </div>
     
     <div class="mb-3 mx-5">
 
         <label class="form-label" for="name">Locality</label>
-        <input class="form-control" type="text" name="c_add_locality" id="c_add_locality" value="<?php if ($details['c_add_locality'] == "") {echo "Enter Locality";} else {echo $details['c_add_locality'];} ?>" > <br>
+        <input required class="form-control" type="text" name="c_add_locality" id="c_add_locality" value="<?php if ($details['c_add_locality'] == "") {echo "Enter Locality";} else {echo $details['c_add_locality'];} ?>" > <br>
     </div>    
     
 <div class="mb-3 mx-5">
 
     <label class="form-label" for="name">City</label>
-    <input class="form-control" type="text" name="c_add_city" id="c_add_city" value="<?php if ($details['c_add_city'] == "") {echo "Enter City/District";} else {echo $details['c_add_city'];} ?>" > <br>
+    <input required class="form-control" type="text" name="c_add_city" id="c_add_city" value="<?php if ($details['c_add_city'] == "") {echo "Enter City/District";} else {echo $details['c_add_city'];} ?>" > <br>
 </div>
 
       <div class="mb-3 mx-5">
 
           <label class="form-label" for="state">State</label>
-          <input class="form-control" type="text" name="c_add_state" id="c_add_state" value="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" > <br>
+          <input required class="form-control" type="text" name="c_add_state" id="c_add_state" value="<?php if ($details['c_add_state'] == "") {echo "Enter State";} else {echo $details['c_add_state'];} ?>" > <br>
         </div>  
       
 

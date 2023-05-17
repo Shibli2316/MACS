@@ -52,88 +52,88 @@ include "../../partials/_dbconnect.php"
     <h3>Your Profile</h3>
 </div>
 
-    <!-- In this fprm the input fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
+    <!-- In this fprm the input required fields are read-only and the details of the user if exists has been displayed in placeholder. The user can further use the update button to update his/her details. -->
     <div class="container border">
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mx-2 my-2" method="post">
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">First Name</label>
-        <input class="form-control" type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="f_name" id="f_name" placeholder="<?php if ($details['f_name'] == "") {echo "Enter First Name";} else {echo $details['f_name'];} ?>" readonly> <br>
 
         </div>
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Last Name</label>
-        <input class="form-control" type="text" name="l_name" id="l_name" placeholder="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="l_name" id="l_name" placeholder="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>" readonly> <br>
 
         </div>
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Father's Name</label>
-        <input class="form-control" type="text" name="father_name" id="father_name" placeholder="<?php if ($details['father_name'] == "") {echo "Enter Father's Name";} else {echo $details['father_name'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="father_name" id="father_name" placeholder="<?php if ($details['father_name'] == "") {echo "Enter Father's Name";} else {echo $details['father_name'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Mother's Name</label>
-        <input class="form-control" type="text" name="mother_name" id="mother_name" placeholder="<?php if ($details['mother_name'] == "") {echo "Enter Mother's Name";} else {echo $details['mother_name'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="mother_name" id="mother_name" placeholder="<?php if ($details['mother_name'] == "") {echo "Enter Mother's Name";} else {echo $details['mother_name'];} ?>" readonly> <br>
 
         </div>
 
         <!-- NOT WORKING -->
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Date of Birth</label>
-        <input class="form-control" type="text" name="dob" id="dob" placeholder="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="dob" id="dob" placeholder="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" readonly> <br>
 
         </div>
 
         <!-- GENDER -->
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Gender</label>
-        <input class="form-control" type="text" name="gender" id="gender" placeholder="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="gender" id="gender" placeholder="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Blood Group</label>
-        <input class="form-control" type="text" name="blood_group" id="blood_group" placeholder="<?php if ($details['blood_group'] == "") {echo "Enter Blood Group";} else {echo $details['blood_group'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="blood_group" id="blood_group" placeholder="<?php if ($details['blood_group'] == "") {echo "Enter Blood Group";} else {echo $details['blood_group'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Mobile</label>
-        <input class="form-control" type="text" name="mobile" id="mobile" placeholder="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="mobile" id="mobile" placeholder="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Guardian's Name</label>
-        <input class="form-control" type="text" name="guardian_name" id="guardian_name" placeholder="<?php if ($details['guardian_name'] == "") {echo "Enter Guardian's Name";} else {echo $details['guardian_name'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="guardian_name" id="guardian_name" placeholder="<?php if ($details['guardian_name'] == "") {echo "Enter Guardian's Name";} else {echo $details['guardian_name'];} ?>" readonly> <br>
 
         </div>
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Guardian's Phone</label>
-        <input class="form-control" type="text" name="guardian_number" id="guardian_number" placeholder="<?php if ($details['guardian_number'] == "") {echo "Enter Guardian's Phone";} else {echo $details['guardian_number'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="guardian_number" id="guardian_number" placeholder="<?php if ($details['guardian_number'] == "") {echo "Enter Guardian's Phone";} else {echo $details['guardian_number'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Disability</label>
-        <input class="form-control" type="text" name="disability" id="disability" placeholder="<?php if ($details['disability'] == "") {echo "Do you have any disability";} else {echo $details['disability'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="disability" id="disability" placeholder="<?php if ($details['disability'] == "") {echo "Do you have any disability";} else {echo $details['disability'];} ?>" readonly> <br>
 
         </div>
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Aadhar Number</label>
-        <input class="form-control" type="text" name="aadhar" id="aadhar" placeholder="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="aadhar" id="aadhar" placeholder="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" readonly> <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Nationality</label>
-        <input class="form-control" type="text" name="nationality" id="nationality" placeholder="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="nationality" id="nationality" placeholder="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" readonly> <br>
 
         </div>
         
@@ -141,7 +141,7 @@ include "../../partials/_dbconnect.php"
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Identity Mark</label>
-        <input class="form-control" type="text" name="identity_mark" id="identity_mark" placeholder="<?php if ($details['identity_mark'] == "") {echo "Enter Identity Mark";} else {echo $details['identity_mark'];} ?>" readonly> <br>
+        <input required class="form-control" type="text" name="identity_mark" id="identity_mark" placeholder="<?php if ($details['identity_mark'] == "") {echo "Enter Identity Mark";} else {echo $details['identity_mark'];} ?>" readonly> <br>
 
         </div>
         

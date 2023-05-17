@@ -89,25 +89,25 @@ $details = mysqli_fetch_assoc($result);
 <div class="mb-3 mx-5">
 
     <label for="name" class="form-label">First Name</label>
-    <input type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>" class="form-control"> <br>
+    <input required type="text" name="f_name" id="f_name" value="<?php if ($details['f_name'] == "") {echo "Enter First name";} else {echo $details['f_name'];} ?>" class="form-control"> <br>
 </div>
     
         <div class="mb-3 mx-5">
 
             <label class="form-label" for="name">Last Name</label>
-            <input class="form-control" type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>"> <br>
+            <input required class="form-control" type="text" name="l_name" id="l_name" value="<?php if ($details['l_name'] == "") {echo "Enter Last Name";} else {echo $details['l_name'];} ?>"> <br>
         </div>
             
         <div class="mb-3 mx-5">
 
             <label class="form-label" for="name">Username</label>
-            <input class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
+            <input required class="form-control" type="text" name="u_name" id="u_name" readonly placeholder="<?php echo $details['username']; ?>"> <br>
         </div>
             
         <div class="mb-3 mx-5">
 
             <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
+            <input required class="form-control" type="email" name="email" id="email" placeholder="<?php if ($details['email'] == "") {echo "Enter Email";} else {echo $details['email'];} ?>" readonly> <br>
         </div>
             
         
@@ -115,7 +115,7 @@ $details = mysqli_fetch_assoc($result);
         
         <div class="mb-3 mx-5">
         <label class="form-label" for="fname">Date of Birth</label>
-        <input class="form-control" type="date" name="dob" id="dob" value="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" > <br>
+        <input required class="form-control" type="date" name="dob" id="dob" value="<?php if ($details['dob'] == "") {echo "Enter Date of Birth";} else {echo $details['dob'];} ?>" > <br>
 
         </div>
 
@@ -123,25 +123,25 @@ $details = mysqli_fetch_assoc($result);
         <!-- GENDER -->
         <div class="mb-3 mx-5">
             <label class="form-label" for="fname">Gender</label>
-            <input class="form-control" type="text" name="gender" id="gender" value="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" > <br>
+            <input required class="form-control" type="text" name="gender" id="gender" value="<?php if ($details['gender'] == "") {echo "Enter gender";} else {echo $details['gender'];} ?>" > <br>
             
         </div>
         
         
         <div class="mb-3 mx-5">
             <label class="form-label" for="fname">Mobile</label>
-            <input class="form-control" type="text" name="mobile" id="mobile" value="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" > <br>
+            <input required class="form-control" type="text" name="mobile" id="mobile" value="<?php if ($details['mobile'] == "") {echo "Enter mobile number";} else {echo $details['mobile'];} ?>" > <br>
             
         </div>
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Aadhar Number</label>
-        <input class="form-control" type="text" name="aadhar" id="aadhar" value="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" > <br>
+        <input required class="form-control" type="text" name="aadhar" id="aadhar" value="<?php if ($details['aadhar'] == "") {echo "Enter Aadhar Number";} else {echo $details['aadhar'];} ?>" > <br>
 
         </div>
 
         <div class="mb-3 mx-5">
         <label class="form-label" for="name">Nationality</label>
-        <input class="form-control" type="text" name="nationality" id="nationality" value="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" > <br>
+        <input required class="form-control" type="text" name="nationality" id="nationality" value="<?php if ($details['nationality'] == "") {echo "Enter Nationality";} else {echo $details['nationality'];} ?>" > <br>
 
         </div>
        

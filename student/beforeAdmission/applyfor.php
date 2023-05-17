@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
 ?>
 
 <!-- Redirecting to profile page -->
-        <!-- <meta http-equiv="refresh" content="0; url = dashboard.php" /> -->
+        <meta http-equiv="refresh" content="0; url = dashboard.php" />
 <?php
     }
 }

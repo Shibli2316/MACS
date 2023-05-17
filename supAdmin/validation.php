@@ -7,7 +7,7 @@ $username = $_POST['username'];
 $pass = $_POST['password'];
 $username = mysqli_real_escape_string($conn, $username);
 
-$sql = "SELECT * FROM admin WHERE username = '$username' and verified='yes'";
+$sql = "SELECT * FROM admin WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 $num = mysqli_num_rows($result);
    
@@ -20,7 +20,7 @@ if ($num == 1){
             $_SESSION['loggedin']=true;
             $_SESSION['username']=$username;
             
-            header('location: index/');
+            header('location: home.php');
         }
         else{
             $showError = "Invalid Password";

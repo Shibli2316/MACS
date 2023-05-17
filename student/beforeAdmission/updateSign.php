@@ -79,14 +79,14 @@ $details = mysqli_fetch_assoc($result);
     <?php 
         if($details['s_sign'] == ""){
             echo "<label class='form-label' for='name'>Upload Signature</label>";
-            echo "<input class='form-control' type='file' name='upload'>";
+            echo "<input required class='form-control' type='file' name='upload'>";
         }
         else{
             echo "<img src='".$details['s_sign']."' height='100px' width='100px' style='border-radius:50%;'><br>";
             echo "<label class='form-label' for='name'>Change Signature</label>";
             // IMPORTANT
             // THE VALUE TAG IS NOT WORKING AS EXPECTED. The image should be pre selected.
-            echo "<input class='form-control' type='file' name='upload' value='".$details['s_sign']."' alt='signature'>";
+            echo "<input required class='form-control' type='file' name='upload' value='".$details['s_sign']."' alt='signature'>";
         }
     ?>
     <br>

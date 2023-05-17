@@ -10,39 +10,13 @@ $user = $_SESSION['username'];
 include '../../partials/_dbconnect.php';
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $q1 = $_POST['q1'];
-    $q2 = $_POST['q2'];
-    $q3 = $_POST['q3'];
-    $q4 = $_POST['q4'];
-    
-    $sum = $q1+$q2+$q3+$q4;
-    if(($q1>2||$q2>2)&&$sum>7){
-        $res = "You are good with logics and can understand things better you may take subjects like Physics, Computer Application or Maths";
-        $random = rand(70,90);
-        $prob = "Your probability of success is ". $random;
-    } elseif($q3>2&&$sum>5){
-        $res = "You are not very good with logics but appriciate art and literature you may opt for English or Fine arts";
-        $random = rand(70,90);
-        $prob = "Your probability of success is ". $random;
-    }elseif(($q1>2||$q2<3)&&$sum>7){
-        $res = "You are good with logics but not arithmatics with a little practice you can do good in subjects like Computer Application or Stats or Chem";
-        $random1 = rand(50,70);
-        $prob = "Your probability of success is ". $random1;
-    }else{
-            $res = "You should go with the booming sector of IT and Computer Science";
-            $random = rand(50,80);
-            $prob = "Your probability of success is ". $random;
-    }
-
-}
 ?>
 
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
     <meta charset="UTF-8">
@@ -146,10 +120,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="card-body text-center">
                     <div class="container text-center">
-                        
-                            <div class="">
-                                <label class="form-label" for="sub"><?php echo $res;?></label>
-                                <label class="form-label" for="sub"><?php echo $prob?></label>
+                        <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $q1 = $_POST['q1'];
+    $q2 = $_POST['q2'];
+    $q3 = $_POST['q3'];
+    $q4 = $_POST['q4'];
+    
+    $sum = $q1+$q2+$q3+$q4;
+    if(($q1>2||$q2>2)&&$sum>7){
+        $res = "You are good with logics and can understand things better you may take subjects like Physics, Computer Application or Maths";
+        $random = rand(70,90);
+        $prob = "Your probability of success is ". $random;
+    } elseif($q3>2&&$sum>5){
+        $res = "You are not very good with logics but appriciate art and literature you may opt for English or Fine arts";
+        $random = rand(70,90);
+        $prob = "Your probability of success is ". $random;
+    }elseif(($q1>2||$q2<3)&&$sum>7){
+        $res = "You are good with logics but not arithmatics with a little practice you can do good in subjects like Computer Application or Stats or Chem";
+        $random1 = rand(50,70);
+        $prob = "Your probability of success is ". $random1;
+    }else{
+            $res = "You should go with the booming sector of IT and Computer Science";
+            $random = rand(50,80);
+            $prob = "Your probability of success is ". $random;
+    }
+
+}
+                        ?>
+                            <div>
+                                <label class='form-label' for='sub'><?php echo $res;?></label>
+                                <label class='form-label' for='sub'><?php echo $prob?></label>
                             </div>
                             <br>
                             <p>Know that this is just a prediction and may lead to unclear or WRONG results. Take your descisions wisely.</p>

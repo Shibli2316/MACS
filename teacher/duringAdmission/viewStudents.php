@@ -48,7 +48,7 @@ $fetching = "SELECT
 *
 FROM students
 JOIN s_specifics
-ON students.s_id = s_specifics.s_id;";
+ON students.username = s_specifics.username;";
 $run = mysqli_query($conn, $fetching);
 if(!$run){
     echo "error";

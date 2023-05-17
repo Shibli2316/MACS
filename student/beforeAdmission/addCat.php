@@ -72,19 +72,19 @@ if (!$conn){
     <form action="addCat.php" method="post">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Employee ID</label>
-            <input type="text" class="form-control" id="id" name="id" placeholder="123">
+            <input required type="text" class="form-control" id="id" name="id" placeholder="123">
         </div>
         <div class="mb-3 mx-5">
             <label for="empName" class="form-label">Enter Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Shibli">
+            <input required type="text" class="form-control" id="name" name="name" placeholder="Shibli">
         </div>
         <div class="mb-3 mx-5">
             <label for="designation" class="form-label">Enter Designation</label>
-            <input type="text" class="form-control" id="designation" name="designation" placeholder="Prof">
+            <input required type="text" class="form-control" id="designation" name="designation" placeholder="Prof">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Aligarh">
+            <input required type="text" class="form-control" id="address" name="address" placeholder="Aligarh">
         </div>
         <div class="container text-center">
             <button class="btn btn-primary my-2" id="save">Submit</button>

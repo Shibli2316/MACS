@@ -20,6 +20,7 @@ $det = mysqli_fetch_assoc($res);
 $tid = $det['t_id'];
 
 
+
 if ($_SERVER['REQUEST_METHOD']=='POST') {
 
 

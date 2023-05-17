@@ -29,7 +29,7 @@
           <a href="index.php" class="icon"><i class="fas fa-home"></i></a>
           <a href="about.php" class="icon"><i class="fas fa-child"></i></a>
           <a href="noticegenral.php" class="icon"><i class="fas fa-newspaper"></i></a>
-          <a href="join.php" class="icon"><i class="fas fa-key"></i></a>
+          <a href="../supAdmin/adminreg.php" class="icon"><i class="fas fa-key"></i></a>
         </div>
       </div>
     </section>

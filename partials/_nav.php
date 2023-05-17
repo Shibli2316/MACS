@@ -1,9 +1,16 @@
 <?php
+error_reporting(0);
+// session_start();
+$user = $_SESSION['username'];
+
 include '_dbconnect.php';
-$sql = "SELECT * FROM verify where username='shibli'";
+$sql = "SELECT * FROM verify where username='$user'";
+
 $run = mysqli_query($conn, $sql);
 $fetch = mysqli_fetch_assoc($run);
+
 $check = $fetch['verified'];
+
 echo "
     <nav class='navbar navbar-expand-lg bg-dark navbar-dark'>
         <div class='container-fluid'>
@@ -19,7 +26,7 @@ echo "
                         <a class='nav-link' href='../../partials/noticegenral.php'>Notice</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='../ques.php'>Satisfaction level</a>
+                        <a class='nav-link' href='../afterAdmission/ques.php'>Satisfaction level</a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='../live.php'>Seat Update</a>

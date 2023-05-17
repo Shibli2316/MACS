@@ -107,31 +107,31 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
     <form action="editEdu.php?name=<?=$user?>&roll=<?=$no?>" method="post" enctype="multipart/form-data">
         <div class="mb-3 mx-5 my-4">
             <label for="id" class="form-label">Enter Level of qualification</label>
-            <input type="text" class="form-control" id="id" name="level" value="<?php if ($details['level'] == "") {echo "Enter Level of qualification";} else {echo $details['level'];} ?>">
+            <input required type="text" class="form-control" id="id" name="level" value="<?php if ($details['level'] == "") {echo "Enter Level of qualification";} else {echo $details['level'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="empName" class="form-label">Year of passing</label>
-            <input type="text" class="form-control" id="name" name="year_passing" value="<?php if ($details['year_passing'] == "") {echo "Enter year of passing";} else {echo $details['year_passing'];} ?>">
+            <input required type="text" class="form-control" id="name" name="year_passing" value="<?php if ($details['year_passing'] == "") {echo "Enter year of passing";} else {echo $details['year_passing'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="designation" class="form-label">Enter Roll Number</label>
-            <input type="text" class="form-control" id="designation" name="roll_no" value="<?php if ($details['roll_no'] == "") {echo "Enter Roll no";} else {echo $details['roll_no'];} ?>">
+            <input required type="text" class="form-control" id="designation" name="roll_no" value="<?php if ($details['roll_no'] == "") {echo "Enter Roll no";} else {echo $details['roll_no'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Board of Studies</label>
-            <input type="text" class="form-control" id="address" name="board" value="<?php if ($details['board'] == "") {echo "Enter board of studies";} else {echo $details['board'];} ?>">
+            <input required type="text" class="form-control" id="address" name="board" value="<?php if ($details['board'] == "") {echo "Enter board of studies";} else {echo $details['board'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Result Status</label>
-            <input type="text" class="form-control" id="address" name="result" value="<?php if ($details['result'] == "") {echo "Passed/Awaited/Appearing";} else {echo $details['result'];} ?>">
+            <input required type="text" class="form-control" id="address" name="result" value="<?php if ($details['result'] == "") {echo "Passed/Awaited/Appearing";} else {echo $details['result'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade Type</label>
-            <input type="text" class="form-control" id="address" name="grade_type" value="<?php if ($details['grade_type'] == "") {echo "Enter type of grade";} else {echo $details['grade_type'];} ?>">
+            <input required type="text" class="form-control" id="address" name="grade_type" value="<?php if ($details['grade_type'] == "") {echo "Enter type of grade";} else {echo $details['grade_type'];} ?>">
         </div>
         <div class="mb-3 mx-5">
             <label for="address" class="form-label">Enter Grade</label>
-            <input type="text" class="form-control" id="address" name="grade" value="<?php if ($details['grade'] == "") {echo "Enter your grades";} else {echo $details['grade'];} ?>">
+            <input required type="text" class="form-control" id="address" name="grade" value="<?php if ($details['grade'] == "") {echo "Enter your grades";} else {echo $details['grade'];} ?>">
         </div>
         
         <div class="container text-center">

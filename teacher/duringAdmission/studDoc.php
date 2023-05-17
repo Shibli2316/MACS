@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
 if($result && (mysqli_num_rows($result)==1)){
   $res = mysqli_fetch_assoc($result);
 }else{
-  echo "Failed";
+//   echo "Failed";
 }
 ?>
 
